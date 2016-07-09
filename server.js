@@ -16,7 +16,9 @@ var express = require('express'), session = require('express-session'), MongoSto
 , app = express()
 
     // client system in use:
-, clientSystem = 'command_only'
+//, clientSystem = 'command_only'
+, clientSystem = 'dig_2d_vanilla'
+
 
     // users
 , users = require('./lib/users.js')
