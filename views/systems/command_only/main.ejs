@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>Welcome to Pebble</title>
+    <meta charset="utf-8">
+
+</head>
+<body>
+
+<h1>Pebble: Command Only Client System</h1>
+<p>To get started press ctrl + j in chrome, and make sure you are in the console section.</p>
+
+<h2>Some commands:</h2>
+
+<p>The following are some commands to help you get started.</p>
+
+<h2>login, and logout:</h2>
+
+<p>login, and logout via the console.</p>
+
+<pre>
+
+// login
+peb.login('username','password')
+
+// logout
+peb.logout()
+
+</pre>
+
+
+
+<h2>pebblebar: userData object:</h2>
+<p>to get basic account info try the basic pebblebar request.</p>
+<pre>
+
+// pebblebar basic response
+peb({action:'pebblebar'})
+
+</pre>
+<p>this will give you the userData object userData.wallet reflects how much pebble the logged in user has in there prime account.</p>
+
+
+
+<h2>pebblebar: invoking a plugin:</h2>
+<p>To invoke a plugin, use the clientData array with the pebblebar action.</p>
+<pre>
+
+// invoke pebblebar plugin 'reserve_info'
+peb({action:'pebblebar', clientData:[{plugin:'reserve_info'}]})
+
+</pre>
+<p>this will give you the standard response with the userData object as well as the response array that will contain the response to the reserve_info plugin invocation. You should see one element in the array, this is the response for reserve_info, inside you should see the reserve object that contains info on the reserve account including world total, and the current pebble balence for the reserve.</p>
+
+
+
+<h2>pebblebar: invoking more then one plugin per request.</h2>
+<p>You can invoke more then one plugin per request by simply adding an additional object to the clientData array.</p>
+<pre>
+
+// request reserve_info, and take a pebble from the reserve account.
+peb({action:'pebblebar', clientData:[{plugin:'reserve_info'},{plugin:'reserve_take',requested:1}]})
+
+</pre>
+<p>This should give you two objects in your response array for each plugin you invoked.</p>
+
+
+<% include ./parts/foot.ejs %>
+
+</body>
+</html>
