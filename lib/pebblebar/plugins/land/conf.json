@@ -1,0 +1,7 @@
+{
+    
+    "pluginName" : "land",
+    "coreFiles" : ["setup"],
+    "addToScopeFiles" : ["land"]
+    
+}

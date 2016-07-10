@@ -1,13 +1,17 @@
 {
 
     "active" : {
-    
-        "reserve":[
-        
+
+        "reserve" : [
+
             "info", "take"
-        
+
+        ],
+
+        "land" : [
+
         ]
-            
+
     }
 
 }
