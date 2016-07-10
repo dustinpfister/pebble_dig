@@ -284,9 +284,6 @@ app.listen(openShift.port, openShift.ipaddress, function () {
 
                         pebble.sanityCheck(function (report) {
 
-                            console.log('sanity check compleate:');
-                            console.log(report);
-
                             // this should  work for now, but should not be set this way
                             lastCheck = new Date(report.checkDone);
 
@@ -298,11 +295,10 @@ app.listen(openShift.port, openShift.ipaddress, function () {
 
                     loop = function () {
 
-                        var t = setTimeout(loop, 3000),
+                        var t = setTimeout(loop, 100),
 
                         time = new Date() - lastCheck;
 
-                        console.log('server.js : time sence last sanity check: ' + time);
 
                         if (time < 10000) {
 
@@ -312,7 +308,6 @@ app.listen(openShift.port, openShift.ipaddress, function () {
                         } else {
 
                             clearTimeout(t);
-                            console.log('time for a sanity check');
 
                             sanityCheck();
 
