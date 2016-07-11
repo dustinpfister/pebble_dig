@@ -13,5 +13,37 @@
 
 <% include ./parts/foot.ejs %>
 
+<script src="/js/stack_3_client.js"></script>
+<script>
+
+// just go ahead and start a new game for now.
+dirt({
+    action : 'pebblebar',
+    clientData : [{
+            plugin : 'land_newgame'
+        }
+    ]
+}, function (data) {
+
+    // all responces
+    data.response.forEach(function (res) {
+
+        //console.log(res);
+
+        // if a new game response, set up the clinets stack
+        if (res.plugin === 'land_newgame') {
+
+            stack.fromServer(JSON.parse(res.pluginData.stack3Data));
+
+            console.log(stack);
+
+        }
+
+    });
+
+});
+</script>
+
+
 </body>
 </html>
