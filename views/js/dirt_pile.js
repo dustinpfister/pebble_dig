@@ -14,11 +14,6 @@ var dirt = (function () {
         // new xhr
         var http = new XMLHttpRequest();
 
-        done = done === undefined ? function (response) {
-            console.log(response)
-        }
-         : done;
-
         // open a post
         http.open('POST', path);
 
@@ -44,32 +39,44 @@ var dirt = (function () {
     },
 
     // the control method that will be returned to dirt global
-    control = function (obj) {
+    control = function (obj, done) {
+
+        done = done === undefined ? function (response) {
+            console.log('no done methond given:');
+            console.log(response);
+        }
+         : done;
 
         if (obj === undefined) {
 
             post('/', {
                 action : 'pebblebar'
-            });
+            },done);
 
         } else {
 
-            post('/', obj);
+            post('/', obj,done);
 
         }
 
         return 'making call to server...';
 
     };
-	
-	// request a new land stack from the server
-	control.newLand = function(){
-		
-		this({action:'pebblebar', clientData:[{plugin:'land_newgame'}]});
-		
-		return 'getting new land...'
-		
-	},
+
+    // request a new land stack from the server
+    control.newLand = function () {
+
+        this({
+            action : 'pebblebar',
+            clientData : [{
+                    plugin : 'land_newgame'
+                }
+            ]
+        });
+
+        return 'getting new land...'
+
+    },
 
     // geneal post to server method that can be used in the browsers JS console
     control.post = function (path, obj) {
