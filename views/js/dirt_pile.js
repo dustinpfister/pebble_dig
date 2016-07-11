@@ -2,7 +2,7 @@
  *    dirl_pile.js
  *    Copyight 2016 by Dustin Pfister
  *
- *    this is a client system for pebble_dig
+ *    this is a hacked over version of pebbles peb.js
  *
  */
 
@@ -51,11 +51,11 @@ var dirt = (function () {
 
             post('/', {
                 action : 'pebblebar'
-            },done);
+            }, done);
 
         } else {
 
-            post('/', obj,done);
+            post('/', obj, done);
 
         }
 
@@ -67,13 +67,22 @@ var dirt = (function () {
     control.newLand = function () {
 
         this({
+
             action : 'pebblebar',
+
             clientData : [{
                     plugin : 'land_newgame'
                 }
             ]
-        });
 
+        },
+
+            function (res) {
+
+            console.log('disco');
+            console.log(res.response);
+
+        });
         return 'getting new land...'
 
     },
