@@ -1,5 +1,5 @@
 /*
- *    stack_3_client.js
+ *    dig_stack_3.js
  *    Copyright 2016 by Dustin Pfister (GPL v3)
  *
  *    A module for working with a stack of 2d grids (3d like)
