@@ -16,7 +16,7 @@ peb({
 
             stack.fromServer(JSON.parse(res.pluginData.stack3Data));
 
-            console.log(stack);
+            draw();
 
         }
 
@@ -48,8 +48,8 @@ drawStack = function () {
     xLen = stack.w,
     yLen = stack.h,
     pxWidth = 640 / xLen,
-    pxHeight = 480 / yLen;
-
+    pxHeight = 480 / yLen,
+    point;
     while (z < zLen) {
 
         y = 0;
@@ -58,7 +58,9 @@ drawStack = function () {
             x = 0;
             while (x < xLen) {
 
-                ctx.fillStyle = 'rgba('+Math.floor(Math.random()*255)+',0,0,1)';
+                point = stack.getPoint(x, y, z);
+
+                ctx.fillStyle = 'rgba(0,0,0,1)';
                 ctx.fillRect(x * pxWidth, y * pxHeight, pxWidth, pxHeight);
 
                 x += 1;
@@ -73,5 +75,3 @@ drawStack = function () {
     }
 
 };
-
-draw();
