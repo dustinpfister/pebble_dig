@@ -11,6 +11,9 @@
 
 <h1>Pebble_dig: 2D Vanilla JS System</h1>
 
+<canvas id="thecanvas">Your Browsers needs to support canvas for this to work.</canvas>
+
+
 <% include ./parts/foot.ejs %>
 
 <script src="/js/stack_3_client.js"></script>
@@ -42,6 +45,23 @@ dirt({
     });
 
 });
+
+var canvas = document.getElementById('thecanvas'),
+ctx = canvas.getContext('2d');
+
+canvas.width='640';
+canvas.height='480';
+
+
+var draw = function(){
+	
+	ctx.fillStyle = '#000000';
+	ctx.fillRect(0,0,canvas.width,canvas.height)
+	
+};
+
+draw();
+
 </script>
 
 
