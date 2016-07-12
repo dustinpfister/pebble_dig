@@ -287,6 +287,13 @@ app.listen(openShift.port, openShift.ipaddress, function () {
                             // this should  work for now, but should not be set this way
                             lastCheck = new Date(report.checkDone);
 
+                            // log reports if not sain
+                            if(!report.sain){
+
+                                console.log(report);
+
+                            }
+
                             loop();
 
                         });
