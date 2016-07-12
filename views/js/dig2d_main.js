@@ -54,7 +54,7 @@ drawStack = function () {
     ci,
     ciLen,
     point;
-    while (z < zLen) {
+    //while (z < zLen) {
 
         y = 0;
         while (y < yLen) {
@@ -81,14 +81,20 @@ drawStack = function () {
 
                 if (point.val.comp.length > 0) {
 
+				    console.log(point.val.comp[0].id);
+				
                     // just render based on comp[0] for now
                     if (point.val.comp[0].id === 0) {
 
+					    console.log('yes dirt');
+					
                         // if dirt
                         ctx.fillStyle = 'rgba(255,255,0,1)';
 
                     } else {
 
+					    console.log('yes rock');
+					
                         // else rock
                         ctx.fillStyle = 'rgba(128,128,128,1)';
 
@@ -110,7 +116,7 @@ drawStack = function () {
 
         }
 
-        z += 1;
-    }
+    //    z += 1;
+    //}
 
 };
