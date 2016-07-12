@@ -1,14 +1,12 @@
 /*
- *    dirl_pile.js
+ *    dig2d_peb.js
  *    Copyight 2016 by Dustin Pfister
  *
  *    this is a hacked over version of pebbles peb.js
  *
  */
 
-var dirt = (function () {
-
-    console.log('hello???');
+var peb = (function () {
 
     // basic post to server method using XMLHttpRequest
     var post = function (path, data, done) {
@@ -40,7 +38,7 @@ var dirt = (function () {
 
     },
 
-    // the control method that will be returned to dirt global
+    // the control method that will be returned to peb global
     control = function (obj, done) {
 
         done = done === undefined ? function (response) {

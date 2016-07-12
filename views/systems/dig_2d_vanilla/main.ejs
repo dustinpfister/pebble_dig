@@ -1,69 +1,25 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 
-<html>
-<head>
+ <html>
+ <head>
 
-    <title>Welcome to Pebble_dig</title>
-    <meta charset="utf-8">
+ <title> Welcome to Pebble_dig </title>
+ <meta charset = "utf-8" >
 
-</head>
-<body>
+     </head>
+     <body>
 
-<h1>Pebble_dig: 2D Vanilla JS System</h1>
+     <h1> Pebble_dig : 2D Vanilla JS System </h1>
 
-<canvas id="thecanvas">Your Browsers needs to support canvas for this to work.</canvas>
+     <canvas id = "thecanvas" > Your Browsers needs to support canvas for this to work. </canvas>
 
+     <script src = "/js/dig2d_peb.js" ></script>
+     <script src = "/js/stack_3_client.js" ></script>
+     <script src="/js/dig2d_main.js"></script>
 
-<% include ./parts/foot.ejs %>
-
-<script src="/js/stack_3_client.js"></script>
-<script>
-
-// just go ahead and start a new game for now.
-dirt({
-    action : 'pebblebar',
-    clientData : [{
-            plugin : 'land_newgame'
-        }
-    ]
-}, function (data) {
-
-    // all responces
-    data.response.forEach(function (res) {
-
-        //console.log(res);
-
-        // if a new game response, set up the clinets stack
-        if (res.plugin === 'land_newgame') {
-
-            stack.fromServer(JSON.parse(res.pluginData.stack3Data));
-
-            console.log(stack);
-
-        }
-
-    });
-
-});
-
-var canvas = document.getElementById('thecanvas'),
-ctx = canvas.getContext('2d');
-
-canvas.width='640';
-canvas.height='480';
+	 
+	 <% include ./parts/foot.ejs %>
 
 
-var draw = function(){
-	
-	ctx.fillStyle = '#000000';
-	ctx.fillRect(0,0,canvas.width,canvas.height)
-	
-};
-
-draw();
-
-</script>
-
-
-</body>
+ </body>
 </html>
