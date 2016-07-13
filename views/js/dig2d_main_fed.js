@@ -6,6 +6,20 @@
  *
  */
 
+ 
+var canvas = document.getElementById('thecanvas'),
+ctx = canvas.getContext('2d');
+
+canvas.width = '640';
+canvas.height = '480';
+
+// Client State (cs)
+var cs = {
+	
+	layer: 0
+	
+};
+ 
 // just go ahead and start a new game for now.
 peb({
 
@@ -43,24 +57,18 @@ peb({
 
 });
 
-var canvas = document.getElementById('thecanvas'),
-ctx = canvas.getContext('2d');
-
-canvas.width = '640';
-canvas.height = '480';
-
 var draw = function () {
 
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    drawStack();
+    drawStack(cs.layer);
 
 };
 
-drawStack = function () {
+drawStack = function (layer) {
 
-    var z = 0,
+    var z = layer,
     zLen = stack.d,
     x,
     y,
