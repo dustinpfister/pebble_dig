@@ -148,7 +148,7 @@ canvas.addEventListener('mousedown', function (e) {
 
     var box = e.target.getBoundingClientRect(),
     x = Math.floor(e.clientX - box.left),
-    y = Math.floor(e.clientX - box.left);
+    y = Math.floor(e.clientY - box.top);
 
     console.log(x + ',' + y);
 
