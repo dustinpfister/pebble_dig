@@ -148,6 +148,34 @@ drawStack = function (layer) {
 
 };
 
+// compute and append dig count based on comp of stack 3 points val object.
+var computeComp = function (point) {
+
+    //if not count compute and append
+    var i = 0,
+    len = point.val.comp.length,
+    hp = 0,
+
+    // the hp multis for each dirt type
+    types = [
+        1, // dirt
+        5 // rock
+    ];
+    while (i < len) {
+
+        //console.log(point.val.comp[i]);
+
+		hp += types[point.val.comp[i].id] * point.val.comp[i].per
+		
+		
+        i += 1;
+
+    }
+	
+	console.log(hp);
+
+};
+
 // EVENTS
 canvas.addEventListener('mousedown', function (e) {
 
@@ -186,14 +214,9 @@ canvas.addEventListener('mousedown', function (e) {
 
             //console.log('time to dig');
 
-            //if not count compute and append
-            var i = 0,
-            len = point.val.comp.length;
-            while (i < len) {
+            if (point.hp === undefined) {
 
-                console.log(point.val.comp[i]);
-
-                i += 1;
+                computeComp(point);
 
             }
 
