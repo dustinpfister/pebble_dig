@@ -53,8 +53,8 @@ peb({
             } else {
 
                 console.log('all land may be locked');
-				
-				drawLocked();
+
+                drawLocked();
 
             }
 
@@ -202,6 +202,8 @@ canvas.addEventListener('mousedown', function (e) {
     //console.log(cellX + ',' + cellY);
     //console.log(point.val);
 
+    e.preventDefault();
+
     // drop down only on empty comp
     if (point.val.comp.length === 0) {
 
@@ -238,10 +240,10 @@ canvas.addEventListener('mousedown', function (e) {
 
             }
 
-            if(point.hp <=0){
-				
-				point.val.comp = [];
-			}
+            if (point.hp <= 0) {
+
+                point.val.comp = [];
+            }
 
         }
 
