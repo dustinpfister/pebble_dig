@@ -1,6 +1,14 @@
 body{
-	
-	background: #000000;
-	color: #ffffff;
-	
+
+    background :  #000000;
+    color :  #ffffff;
+
+}
+
+#game_area{
+
+    position : relative;
+    width : 90%;
+    left : 10%;
+
 }
