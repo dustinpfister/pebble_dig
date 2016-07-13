@@ -56,12 +56,21 @@ peb({
 
 });
 
+var infoArea = document.getElementById('game_info_area');
+
+var updateInfoArea = function () {
+
+    infoArea.innerHTML = 'currentLayer :' + cs.layer;
+
+};
+
 var draw = function () {
 
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawStack(cs.layer);
+    updateInfoArea();
 
 };
 
