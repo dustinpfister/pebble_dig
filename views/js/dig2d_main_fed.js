@@ -23,12 +23,19 @@ peb({
         // if a new game response, set up the clinets stack
         if (res.plugin === 'land_newfedgame') {
 
-            // update the stack to the fed land
-            stack.fromServer(JSON.parse(res.fedGame.land.stack3Data));
-
             console.log(res);
 
-            draw();
+            if (res.sucess) {
+                // update the stack to the fed land
+                stack.fromServer(JSON.parse(res.fedGame.land.stack3Data));
+
+                draw();
+
+            } else {
+
+                console.log('all land may be locked');
+
+            }
 
         }
 
