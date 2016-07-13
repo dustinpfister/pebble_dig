@@ -148,9 +148,13 @@ canvas.addEventListener('mousedown', function (e) {
 
     var box = e.target.getBoundingClientRect(),
     x = Math.floor(e.clientX - box.left),
-    y = Math.floor(e.clientY - box.top);
+    y = Math.floor(e.clientY - box.top),
+    pxWidth = 640 / stack.w,
+    pxHeight = 480 / stack.h,
+    cellX = Math.floor(x / pxWidth),
+    cellY = Math.floor(y / pxHeight);
 
-    console.log(x + ',' + y);
+    console.log(cellX + ',' + cellY);
 
     cs.layer += 1;
 
