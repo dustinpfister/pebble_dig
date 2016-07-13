@@ -160,8 +160,8 @@ canvas.addEventListener('mousedown', function (e) {
     cellY = Math.floor(y / pxHeight),
     point = stack.getPoint(cellX, cellY, cs.layer);
 
-    console.log(cellX + ',' + cellY);
-    console.log(point.val);
+    //console.log(cellX + ',' + cellY);
+    //console.log(point.val);
 
     // drop down only on empty comp
     if (point.val.comp.length === 0) {
@@ -184,7 +184,18 @@ canvas.addEventListener('mousedown', function (e) {
 
         } else {
 
-            console.log('time to dig');
+            //console.log('time to dig');
+
+            //if not count compute and append
+            var i = 0,
+            len = point.val.comp.length;
+            while (i < len) {
+
+                console.log(point.val.comp[i]);
+
+                i += 1;
+
+            }
 
         }
 
