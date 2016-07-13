@@ -53,6 +53,8 @@ peb({
             } else {
 
                 console.log('all land may be locked');
+				
+				drawLocked();
 
             }
 
@@ -77,6 +79,15 @@ var draw = function () {
 
     drawStack(cs.layer);
     updateInfoArea();
+
+};
+
+var drawLocked = function () {
+
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    infoArea.innerHTML = 'all land is locked, try again later';
 
 };
 
