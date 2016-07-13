@@ -23,15 +23,10 @@ peb({
         // if a new game response, set up the clinets stack
         if (res.plugin === 'land_newfedgame') {
 
-		    //console.log(res.fedGame.land.stack3Data);
-			
-			stack.fromServer(JSON.parse(res.fedGame.land.stack3Data));
-		
-		    console.log(stack);
-		
-            //stack.fromServer(JSON.parse(res.pluginData.stack3Data));
+            // update the stack to the fed land
+            stack.fromServer(JSON.parse(res.fedGame.land.stack3Data));
 
-            //console.log(stack);
+            console.log(res);
 
             draw();
 
@@ -69,7 +64,6 @@ drawStack = function () {
     ci,
     ciLen,
     point;
-    //while (z < zLen) {
 
     y = 0;
     while (y < yLen) {
@@ -78,8 +72,6 @@ drawStack = function () {
         while (x < xLen) {
 
             point = stack.getPoint(x, y, z);
-
-            console.log(point.val.comp);
 
             /*
 
@@ -96,19 +88,13 @@ drawStack = function () {
 
             if (point.val.comp.length > 0) {
 
-                console.log(point.val.comp[0].id);
-
                 // just render based on comp[0] for now
                 if (point.val.comp[0].id === 0) {
-
-                    console.log('yes dirt');
 
                     // if dirt
                     ctx.fillStyle = 'rgba(255,255,0,1)';
 
                 } else {
-
-                    console.log('yes rock');
 
                     // else rock
                     ctx.fillStyle = 'rgba(128,128,128,1)';
@@ -130,8 +116,5 @@ drawStack = function () {
         y += 1;
 
     }
-
-    //    z += 1;
-    //}
 
 };
