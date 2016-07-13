@@ -220,6 +220,13 @@ canvas.addEventListener('mousedown', function (e) {
 
             }
 
+            if (point.hp) {
+
+                cs.digs -= 1;
+                point.hp -= 1;
+
+            }
+
             console.log(point.hp);
 
         }
