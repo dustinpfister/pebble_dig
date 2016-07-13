@@ -173,7 +173,15 @@ canvas.addEventListener('mousedown', function (e) {
 
     } else {
 
-        console.log('not empty space!');
+        if (cs.digs <= 0) {
+
+            console.log('you are out of digs!');
+
+        } else {
+
+            console.log('time to dig');
+
+        }
 
     }
 
