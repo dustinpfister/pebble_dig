@@ -144,7 +144,13 @@ drawStack = function (layer) {
 
 // EVENTS
 
-canvas.addEventListener('mousedown', function () {
+canvas.addEventListener('mousedown', function (e) {
+
+    var box = e.target.getBoundingClientRect(),
+    x = Math.floor(e.clientX - box.left),
+    y = Math.floor(e.clientX - box.left);
+
+    console.log(x + ',' + y);
 
     cs.layer += 1;
 
