@@ -151,20 +151,31 @@ canvas.addEventListener('mousedown', function (e) {
     pxWidth = 640 / stack.w,
     pxHeight = 480 / stack.h,
     cellX = Math.floor(x / pxWidth),
-    cellY = Math.floor(y / pxHeight);
+    cellY = Math.floor(y / pxHeight),
+    point = stack.getPoint(cellX, cellY, cs.layer);
 
     console.log(cellX + ',' + cellY);
-    console.log(stack.getPoint(cellX, cellY, cs.layer));
+    console.log(point.val);
 
-    cs.layer += 1;
+    // drop down only on empty comp
+    if (point.val.comp.length === 0) {
 
-    if (cs.layer >= stack.d) {
+        console.log('droping down');
 
-        cs.layer = 0;
+        cs.layer += 1;
+
+        if (cs.layer >= stack.d) {
+
+            cs.layer = stack.d - 1;
+
+        }
+
+    } else {
+
+        console.log('not empty space!');
 
     }
 
-    
     draw();
 
 });
