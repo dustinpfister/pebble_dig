@@ -6,7 +6,6 @@
  *
  */
 
- 
 var canvas = document.getElementById('thecanvas'),
 ctx = canvas.getContext('2d');
 
@@ -15,11 +14,11 @@ canvas.height = '480';
 
 // Client State (cs)
 var cs = {
-	
-	layer: 0
-	
+
+    layer : 0
+
 };
- 
+
 // just go ahead and start a new game for now.
 peb({
 
@@ -133,3 +132,19 @@ drawStack = function (layer) {
     }
 
 };
+
+// EVENTS
+
+canvas.addEventListener('mousedown', function () {
+
+    cs.layer += 1;
+
+    if (cs.layer >= stack.d) {
+
+        cs.layer = 0;
+
+    }
+
+    draw();
+
+});
