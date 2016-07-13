@@ -143,7 +143,6 @@ drawStack = function (layer) {
 };
 
 // EVENTS
-
 canvas.addEventListener('mousedown', function (e) {
 
     var box = e.target.getBoundingClientRect(),
@@ -155,6 +154,7 @@ canvas.addEventListener('mousedown', function (e) {
     cellY = Math.floor(y / pxHeight);
 
     console.log(cellX + ',' + cellY);
+    console.log(stack.getPoint(cellX, cellY, cs.layer));
 
     cs.layer += 1;
 
@@ -164,6 +164,7 @@ canvas.addEventListener('mousedown', function (e) {
 
     }
 
+    
     draw();
 
 });
