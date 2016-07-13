@@ -227,7 +227,10 @@ canvas.addEventListener('mousedown', function (e) {
 
             }
 
-            console.log(point.hp);
+            if(point.hp <=0){
+				
+				point.val.comp = [];
+			}
 
         }
 
