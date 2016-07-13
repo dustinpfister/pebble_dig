@@ -15,7 +15,8 @@ canvas.height = '480';
 // Client State (cs)
 var cs = {
 
-    layer : 0
+    layer : 0,
+    digs : 0
 
 };
 
@@ -60,7 +61,7 @@ var infoArea = document.getElementById('game_info_area');
 
 var updateInfoArea = function () {
 
-    infoArea.innerHTML = 'currentLayer :' + cs.layer;
+    infoArea.innerHTML = 'currentLayer :' + cs.layer + '; digs : ' + cs.digs;
 
 };
 
