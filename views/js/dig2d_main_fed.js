@@ -43,6 +43,11 @@ peb({
                 // update the stack to the fed land
                 stack.fromServer(JSON.parse(res.fedGame.land.stack3Data));
 
+                console.log(res.fedGame.land);
+
+                // set client state max digs to max digs allowed
+                cs.digs = res.fedGame.land.maxDigs;
+
                 draw();
 
             } else {
