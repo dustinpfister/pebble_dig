@@ -165,14 +165,14 @@ var computeComp = function (point) {
 
         //console.log(point.val.comp[i]);
 
-		hp += types[point.val.comp[i].id] * point.val.comp[i].per
-		
-		
+        hp += types[point.val.comp[i].id] * point.val.comp[i].per
+
         i += 1;
 
     }
-	
-	console.log(hp);
+
+    //console.log(hp);
+    point.hp = hp;
 
 };
 
@@ -219,6 +219,8 @@ canvas.addEventListener('mousedown', function (e) {
                 computeComp(point);
 
             }
+
+            console.log(point.hp);
 
         }
 
