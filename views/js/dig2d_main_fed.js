@@ -25,7 +25,7 @@ peb({
 
             console.log(res);
 
-            if (res.sucess) {
+            if (res.success) {
                 // update the stack to the fed land
                 stack.fromServer(JSON.parse(res.fedGame.land.stack3Data));
 
