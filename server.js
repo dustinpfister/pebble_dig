@@ -253,7 +253,7 @@ app.listen(openShift.port, openShift.ipaddress, function () {
                 // the tax loop
                 taxLoop = function () {
 
-                    var t = setTimeout(taxLoop, 10000);
+                    var t = setTimeout(taxLoop, 1000);
 
                     // run pebblebars updater
                     require('./lib/pebblebar/updater.js').update();
