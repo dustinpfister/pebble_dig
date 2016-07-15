@@ -15,9 +15,12 @@ canvas.height = '480';
 // Client State (cs)
 var cs = {
 
+    username : '', // the username of the player
     layer : 0,
     digs : 0,
-    pebbleInLand : 0
+    userWallet: 0,     // the amount of pebble in the users waller
+    pebbleDelta: 0,    // the amount of pebble the user may have won so far
+    pebbleInLand : 0   // the total amount of pebble in the land
 
 };
 
@@ -45,6 +48,10 @@ peb({
     ]
 
 }, function (data) {
+
+    console.log(data)
+    cs.username = data.userData.username;
+    cs.wallet = data.userData.primeWallet;
 
     // all responces
     data.response.forEach(function (res) {
@@ -82,7 +89,8 @@ var infoArea = document.getElementById('game_info_area');
 
 var updateInfoArea = function () {
 
-    infoArea.innerHTML = 'currentLayer :' + cs.layer + '; digs : ' + cs.digs+'; pebble in land: ' + cs.pebbleInLand;
+    infoArea.innerHTML = '{ user: ' + cs.username + ', pebble : ' + cs.wallet + '}<br>'+
+        'currentLayer :' + cs.layer + '; digs : ' + cs.digs+'; pebble in land: ' + cs.pebbleInLand+'; pebbleDelta: ' + cs.pebbleDelta;
 
 };
 
