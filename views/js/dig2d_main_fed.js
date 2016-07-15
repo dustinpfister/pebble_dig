@@ -18,24 +18,24 @@ var cs = {
     username : '', // the username of the player
     layer : 0,
     digs : 0,
-    userWallet: 0,     // the amount of pebble in the users waller
-    pebbleDelta: 0,    // the amount of pebble the user may have won so far
-    pebbleInLand : 0   // the total amount of pebble in the land
+    userWallet : 0, // the amount of pebble in the users waller
+    pebbleDelta : 0, // the amount of pebble the user may have won so far
+    pebbleInLand : 0 // the total amount of pebble in the land
 
 };
 
-var countPebble = function(stack){
-	
-	var total = 0;
-	
-	stack.points.forEach(function(pt){
-		
-		total += pt.val.amount;
-		
-	});
-	
-	return total;
-	
+var countPebble = function (stack) {
+
+    var total = 0;
+
+    stack.points.forEach(function (pt) {
+
+        total += pt.val.amount;
+
+    });
+
+    return total;
+
 };
 
 // just go ahead and start a new game for now.
@@ -65,9 +65,10 @@ peb({
 
                 // set client state max digs to max digs allowed
                 cs.digs = res.fedGame.land.maxDigs;
-                cs.pebbleInLand = res.fedGame.wallet
-				
-				console.log('total pebble in stack: ' + countPebble(stack));
+                cs.pebbleInLand = res.fedGame.wallet;
+                cs.pebbleDelta = 0;
+
+                console.log('total pebble in stack: ' + countPebble(stack));
 
                 draw();
 
@@ -89,8 +90,8 @@ var infoArea = document.getElementById('game_info_area');
 
 var updateInfoArea = function () {
 
-    infoArea.innerHTML = '{ user: ' + cs.username + ', pebble : ' + cs.wallet + '}<br>'+
-        'currentLayer :' + cs.layer + '; digs : ' + cs.digs+'; pebble in land: ' + cs.pebbleInLand+'; pebbleDelta: ' + cs.pebbleDelta;
+    infoArea.innerHTML = '{ user: ' + cs.username + ', pebble : ' + cs.wallet + '}<br>' +
+        'currentLayer :' + cs.layer + '; digs : ' + cs.digs + '; pebble in land: ' + cs.pebbleInLand + '; pebbleDelta: ' + cs.pebbleDelta;
 
 };
 
@@ -248,7 +249,9 @@ canvas.addEventListener('mousedown', function (e) {
         } else {
 
             //console.log('time to dig');
-			console.log(point.val);
+            console.log(point.val);
+
+            cs.pebbleDelta += point.val.amount;
 
             if (point.hp === undefined) {
 
