@@ -21,6 +21,7 @@ var cs = {
     userWallet : 0, // the amount of pebble in the users waller
     pebbleDelta : 0, // the amount of pebble the user may have won so far
     pebbleInLand : 0, // the total amount of pebble in the land
+    landId : '', // the id of the land being diged
     gameOver : false
 
 };
@@ -68,6 +69,7 @@ peb({
                 cs.digs = res.fedGame.land.maxDigs;
                 cs.pebbleInLand = res.fedGame.wallet;
                 cs.pebbleDelta = 0;
+                cs.landId = res.fedGame.landId;
                 cs.gameOver = false;
 
                 console.log('total pebble in stack: ' + countPebble(stack));
@@ -97,7 +99,8 @@ var submit = function (stack) {
         action : 'pebblebar',
         clientData : [{
                 plugin : 'land_fedgame_submit',
-                stack3Data : JSON.stringify(stack) 
+                landId : cs.landId,
+                stack3Data : JSON.stringify(stack)
             }
         ]
 
