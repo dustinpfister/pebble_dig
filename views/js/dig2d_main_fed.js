@@ -88,7 +88,7 @@ peb({
 
 });
 
-var submit = function () {
+var submit = function (stack) {
 
     console.log('submit');
 
@@ -96,7 +96,8 @@ var submit = function () {
 
         action : 'pebblebar',
         clientData : [{
-                plugin : 'land_fedgame_submit'
+                plugin : 'land_fedgame_submit',
+                stack3Data : JSON.stringify(stack) 
             }
         ]
 
@@ -298,7 +299,7 @@ canvas.addEventListener('mousedown', function (e) {
                 if (cs.digs <= 0) {
 
                     cs.gameOver = true;
-                    submit();
+                    submit(stack);
 
                 }
 
