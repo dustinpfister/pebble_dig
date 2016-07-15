@@ -20,7 +20,8 @@ var cs = {
     digs : 0,
     userWallet : 0, // the amount of pebble in the users waller
     pebbleDelta : 0, // the amount of pebble the user may have won so far
-    pebbleInLand : 0 // the total amount of pebble in the land
+    pebbleInLand : 0, // the total amount of pebble in the land
+    gameOver : false
 
 };
 
@@ -67,6 +68,7 @@ peb({
                 cs.digs = res.fedGame.land.maxDigs;
                 cs.pebbleInLand = res.fedGame.wallet;
                 cs.pebbleDelta = 0;
+                cs.gameOver = false;
 
                 console.log('total pebble in stack: ' + countPebble(stack));
 
@@ -85,6 +87,12 @@ peb({
     });
 
 });
+
+var submit = function () {
+
+    console.log('submit');
+
+}
 
 var infoArea = document.getElementById('game_info_area');
 
@@ -227,51 +235,66 @@ canvas.addEventListener('mousedown', function (e) {
 
     e.preventDefault();
 
-    // drop down only on empty comp
-    if (point.val.comp.length === 0) {
+    if (!cs.gameOver) {
 
-        console.log('droping down');
+        // drop down only on empty comp
+        if (point.val.comp.length === 0) {
 
-        cs.layer += 1;
+            console.log('droping down');
 
-        if (cs.layer >= stack.d) {
+            cs.layer += 1;
 
-            cs.layer = stack.d - 1;
+            if (cs.layer >= stack.d) {
+
+                cs.layer = stack.d - 1;
+
+            }
+
+        } else {
+
+            if (cs.digs <= 0) {
+
+                console.log('you are out of digs!');
+
+            } else {
+
+                //console.log('time to dig');
+                console.log(point.val);
+
+                cs.pebbleDelta += point.val.amount;
+
+                if (point.hp === undefined) {
+
+                    computeComp(point);
+
+                }
+
+                if (point.hp) {
+
+                    cs.digs -= 1;
+                    point.hp -= 1;
+
+                }
+
+                if (point.hp <= 0) {
+
+                    point.val.comp = [];
+                }
+
+                if (cs.digs <= 0) {
+
+                    cs.gameOver = true;
+                    submit();
+
+                }
+
+            }
 
         }
 
     } else {
 
-        if (cs.digs <= 0) {
-
-            console.log('you are out of digs!');
-
-        } else {
-
-            //console.log('time to dig');
-            console.log(point.val);
-
-            cs.pebbleDelta += point.val.amount;
-
-            if (point.hp === undefined) {
-
-                computeComp(point);
-
-            }
-
-            if (point.hp) {
-
-                cs.digs -= 1;
-                point.hp -= 1;
-
-            }
-
-            if (point.hp <= 0) {
-
-                point.val.comp = [];
-            }
-
-        }
+        console.log('the game is over');
 
     }
 
