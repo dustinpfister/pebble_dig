@@ -1,0 +1,6 @@
+{
+    
+    "pluginName" : "land_submit",
+    "coreFiles" : ["responder"]
+    
+}
