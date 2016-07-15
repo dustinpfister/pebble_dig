@@ -1,0 +1,6 @@
+{
+    
+    "pluginName" : "land_fedgame_submit",
+    "coreFiles" : ["responder"]
+    
+}
