@@ -10,7 +10,7 @@
 
         "land" : [
 
-            "newgame","newfedgame","fedgame_submit"
+            "newgame","submit"
 
         ]
 
