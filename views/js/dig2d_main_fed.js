@@ -16,7 +16,8 @@ canvas.height = '480';
 var cs = {
 
     layer : 0,
-    digs : 0
+    digs : 0,
+    pebbleInLand : 0
 
 };
 
@@ -37,16 +38,13 @@ peb({
         // if a new game response, set up the clinets stack
         if (res.plugin === 'land_newfedgame') {
 
-            console.log(res);
-
             if (res.success) {
                 // update the stack to the fed land
                 stack.fromServer(JSON.parse(res.fedGame.land.stack3Data));
 
-                console.log(res.fedGame.land);
-
                 // set client state max digs to max digs allowed
                 cs.digs = res.fedGame.land.maxDigs;
+                cs.pebbleInLand = res.fedGame.wallet
 
                 draw();
 
@@ -68,7 +66,7 @@ var infoArea = document.getElementById('game_info_area');
 
 var updateInfoArea = function () {
 
-    infoArea.innerHTML = 'currentLayer :' + cs.layer + '; digs : ' + cs.digs;
+    infoArea.innerHTML = 'currentLayer :' + cs.layer + '; digs : ' + cs.digs+'; pebble in land: ' + cs.pebbleInLand;
 
 };
 
