@@ -21,6 +21,20 @@ var cs = {
 
 };
 
+var countPebble = function(stack){
+	
+	var total = 0;
+	
+	stack.points.forEach(function(pt){
+		
+		total += pt.val.amount;
+		
+	});
+	
+	return total;
+	
+};
+
 // just go ahead and start a new game for now.
 peb({
 
@@ -45,6 +59,8 @@ peb({
                 // set client state max digs to max digs allowed
                 cs.digs = res.fedGame.land.maxDigs;
                 cs.pebbleInLand = res.fedGame.wallet
+				
+				console.log('total pebble in stack: ' + countPebble(stack));
 
                 draw();
 
@@ -224,6 +240,7 @@ canvas.addEventListener('mousedown', function (e) {
         } else {
 
             //console.log('time to dig');
+			console.log(point.val);
 
             if (point.hp === undefined) {
 
