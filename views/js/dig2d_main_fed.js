@@ -92,6 +92,20 @@ var submit = function () {
 
     console.log('submit');
 
+    peb({
+
+        action : 'pebblebar',
+        clientData : [{
+                plugin : 'land_fedgame_submit'
+            }
+        ]
+
+    }, function (data) {
+
+        console.log('submited');
+
+    });
+
 }
 
 var infoArea = document.getElementById('game_info_area');
