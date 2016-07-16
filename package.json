@@ -1,6 +1,6 @@
 {
   "name": "pebble_dig",
-  "version": "1.2.27",
+  "version": "1.2.28",
   "description": "dig for some pebbles",
   "main": "server.js",
   "dependencies": {
