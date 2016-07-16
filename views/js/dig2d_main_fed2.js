@@ -67,10 +67,10 @@ peb({
                 stack.fromServer(JSON.parse(res.game.land.stack3Data));
 
                 // set client state max digs to max digs allowed
-                //cs.digs = res.game.land.maxDigs;
+                cs.digs = res.game.land.maxDigs;
 				
 				// just setting digs client side for now
-				cs.digs = 10;
+				//cs.digs = 10;
                 
 				
 				cs.pebbleInLand = res.game.wallet;
