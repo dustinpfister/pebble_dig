@@ -64,13 +64,13 @@ peb({
 
             if (res.success) {
                 // update the stack to the fed land
-                stack.fromServer(JSON.parse(res.fedGame.land.stack3Data));
+                stack.fromServer(JSON.parse(res.game.land.stack3Data));
 
                 // set client state max digs to max digs allowed
-                cs.digs = res.fedGame.land.maxDigs;
-                cs.pebbleInLand = res.fedGame.wallet;
+                cs.digs = res.game.land.maxDigs;
+                cs.pebbleInLand = res.game.wallet;
                 cs.pebbleDelta = 0;
-                cs.landId = res.fedGame.landId;
+                cs.landId = res.game.landId;
                 cs.gameOver = false;
 
                 console.log('total pebble in stack: ' + countPebble(stack));
@@ -99,7 +99,7 @@ var submit = function (stack) {
 
         action : 'pebblebar',
         clientData : [{
-                //plugin : 'land_fedgame_submit',
+                //plugin : 'land_game_submit',
 				plugin : 'land_submit',
                 landId : cs.landId,
                 stack3Data : JSON.stringify(stack)
