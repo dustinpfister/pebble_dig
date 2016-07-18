@@ -47,7 +47,7 @@ peb({
     action : 'pebblebar',
     clientData : [{
             plugin : 'land_newgame',
-            type : 'fed'
+            type : 'pvp'
         }
     ]
 
