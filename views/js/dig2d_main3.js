@@ -59,8 +59,12 @@ peb({
     // all responces
     data.response.forEach(function (res) {
 
+	    console.log('anything');
+	
         // if a new game response, set up the clinets stack
         if (res.plugin === 'land_newgame') {
+			
+			console.log('responce from land_newgame');
 
             if (res.success) {
 
