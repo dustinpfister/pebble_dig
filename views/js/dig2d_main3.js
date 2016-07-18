@@ -16,6 +16,7 @@ canvas.height = '480';
 var cs = {
 
     username : '', // the username of the player
+    attackingUsername : '', // the username of the player you are attacking
     layer : 0,
     digs : 0,
     userWallet : 0, // the amount of pebble in the users waller
@@ -59,12 +60,12 @@ peb({
     // all responces
     data.response.forEach(function (res) {
 
-	    console.log('anything');
-	
+        console.log('anything');
+
         // if a new game response, set up the clinets stack
         if (res.plugin === 'land_newgame') {
-			
-			console.log('responce from land_newgame');
+
+            console.log('responce from land_newgame');
 
             if (res.success) {
 
@@ -79,6 +80,8 @@ peb({
                     // just setting digs client side for now
                     //cs.digs = 10;
 
+
+                    cs.attackingUsername = res.game.land.owner;
 
                     cs.pebbleInLand = res.game.wallet;
                     cs.pebbleDelta = 0;
@@ -137,7 +140,7 @@ var infoArea = document.getElementById('game_info_area');
 var updateInfoArea = function () {
 
     infoArea.innerHTML = '{ user: ' + cs.username + ', pebble : ' + cs.wallet + '}<br>' +
-        'currentLayer :' + cs.layer + '; digs : ' + cs.digs + '; pebble in land: ' + cs.pebbleInLand + '; pebbleDelta: ' + cs.pebbleDelta;
+        'attacking user: ' + cs.attackingUsername + '; currentLayer :' + cs.layer + '; digs : ' + cs.digs + '; pebble in land: ' + cs.pebbleInLand + '; pebbleDelta: ' + cs.pebbleDelta;
 
 };
 
