@@ -302,8 +302,6 @@ canvas.addEventListener('mousedown', function (e) {
                 //console.log('time to dig');
                 console.log(point.val);
 
-                cs.pebbleDelta += point.val.amount;
-
                 if (point.hp === undefined) {
 
                     computeComp(point);
@@ -319,6 +317,7 @@ canvas.addEventListener('mousedown', function (e) {
 
                 if (point.hp <= 0) {
 
+                    cs.pebbleDelta += point.val.amount;
                     point.val.comp = [];
                 }
 
