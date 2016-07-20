@@ -1,0 +1,21 @@
+body{
+
+    background :  #ffffff;
+    color :  #000000;
+    margin:0px;
+    padding:0px;
+
+}
+
+#game_area{
+
+    position : relative;
+    width : 90%;
+    left : 5%;
+    background:#af6a00;
+
+}
+
+#thecanvas{
+
+}
