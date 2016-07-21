@@ -11,6 +11,74 @@ var canvas = (function () {
     var dom,
     ctx,
 
+    drawStack = function (layer) {
+
+        var z = layer,
+        zLen = stack.d,
+        x,
+        y,
+        xLen = stack.w,
+        yLen = stack.h,
+        pxWidth = 640 / xLen,
+        pxHeight = 480 / yLen,
+        ci,
+        ciLen,
+        point;
+
+        y = 0;
+        while (y < yLen) {
+
+            x = 0;
+            while (x < xLen) {
+
+                point = stack.getPoint(x, y, z);
+
+                /*
+
+                ALERT! we will have to do soething like this in the future
+
+                ci = 0, ciLen = point.val.comp.length;
+                while(ci < ciLen){
+
+
+
+                ci += 1;
+                }
+                 */
+
+                if (point.val.comp.length > 0) {
+
+                    // just render based on comp[0] for now
+                    if (point.val.comp[0].id === 0) {
+
+                        // if dirt
+                        ctx.fillStyle = 'rgba(255,255,0,1)';
+
+                    } else {
+
+                        // else rock
+                        ctx.fillStyle = 'rgba(128,128,128,1)';
+
+                    }
+
+                } else {
+
+                    ctx.fillStyle = '#000000';
+
+                }
+
+                ctx.fillRect(x * pxWidth, y * pxHeight, pxWidth, pxHeight);
+
+                x += 1;
+
+            }
+
+            y += 1;
+
+        }
+
+    },
+
     drawStates = {
 
         start : function () {},
