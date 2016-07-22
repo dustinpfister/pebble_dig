@@ -104,6 +104,8 @@ var canvas = (function () {
 
         start : function () {},
 
+        title : function () {},
+
         game : function () {
 
             drawInfo();

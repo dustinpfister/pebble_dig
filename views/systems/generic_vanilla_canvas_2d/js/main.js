@@ -37,15 +37,18 @@
 
         },
 
+        title : {
+
+            firstRun : function () {},
+
+            tick : function () {}
+
+        },
+
         game : {
 
-            firstRun : function () {
-
-
-            },
-            tick : function () {
-
-            }
+            firstRun : function () {},
+            tick : function () {}
 
         },
 
