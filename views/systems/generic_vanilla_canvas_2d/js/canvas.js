@@ -26,54 +26,59 @@ var canvas = (function () {
         point;
 
         y = 0;
-        while (y < yLen) {
 
-            x = 0;
-            while (x < xLen) {
+        if (stack.points.length > 0) {
 
-                point = stack.getPoint(x, y, z);
+            while (y < yLen) {
 
-                /*
+                x = 0;
+                while (x < xLen) {
 
-                ALERT! we will have to do soething like this in the future
+                    point = stack.getPoint(x, y, z);
 
-                ci = 0, ciLen = point.val.comp.length;
-                while(ci < ciLen){
+                    /*
+
+                    ALERT! we will have to do soething like this in the future
+
+                    ci = 0, ciLen = point.val.comp.length;
+                    while(ci < ciLen){
 
 
 
-                ci += 1;
-                }
-                 */
+                    ci += 1;
+                    }
+                     */
 
-                if (point.val.comp.length > 0) {
+                    if (point.val.comp.length > 0) {
 
-                    // just render based on comp[0] for now
-                    if (point.val.comp[0].id === 0) {
+                        // just render based on comp[0] for now
+                        if (point.val.comp[0].id === 0) {
 
-                        // if dirt
-                        ctx.fillStyle = 'rgba(255,255,0,1)';
+                            // if dirt
+                            ctx.fillStyle = 'rgba(255,255,0,1)';
+
+                        } else {
+
+                            // else rock
+                            ctx.fillStyle = 'rgba(128,128,128,1)';
+
+                        }
 
                     } else {
 
-                        // else rock
-                        ctx.fillStyle = 'rgba(128,128,128,1)';
+                        ctx.fillStyle = '#000000';
 
                     }
 
-                } else {
+                    ctx.fillRect(x * pxWidth, y * pxHeight, pxWidth, pxHeight);
 
-                    ctx.fillStyle = '#000000';
+                    x += 1;
 
                 }
 
-                ctx.fillRect(x * pxWidth, y * pxHeight, pxWidth, pxHeight);
-
-                x += 1;
+                y += 1;
 
             }
-
-            y += 1;
 
         }
 
@@ -83,7 +88,13 @@ var canvas = (function () {
 
         start : function () {},
 
-        game : function () {}
+        game : function () {
+
+            console.log('okay thats not the problem');
+
+            drawStack();
+
+        }
 
     },
 
@@ -136,6 +147,8 @@ var canvas = (function () {
 
             ctx.fillStyle = '#000000';
             ctx.fillRect(0, 0, dom.width, dom.height);
+
+            drawStates[state]();
 
         }
 
