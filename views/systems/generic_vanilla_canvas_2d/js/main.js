@@ -21,14 +21,17 @@
 
                 console.log('start state: first run.');
                 canvas.useCanvas('thecanvas');
-				
-				// just start a game here for now?
-				game.newGame('fed');
+
+                // just start a game here for now?
+                game.newGame('fed');
 
             },
             tick : function () {
 
                 console.log('start state: tick.');
+
+                currentState = 'game';
+                firstRun = true;
 
             }
 
