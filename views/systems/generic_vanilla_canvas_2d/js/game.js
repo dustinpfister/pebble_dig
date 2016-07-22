@@ -155,7 +155,7 @@ var game = (function () {
                 action : 'pebblebar',
                 clientData : [{
                         plugin : 'land_newgame',
-                        type : 'pvp'
+                        type : type
                     }
                 ]
 
