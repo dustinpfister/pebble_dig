@@ -74,9 +74,12 @@ var game = (function () {
 
     },
 
-    api = {
+    // user actions for each app state
+    actions = {
 
-        userAction : function (action) {
+        start : function (action) {},
+        title : function (action) {},
+        game : function (action) {
 
             var point = stack.getPoint(action.cellX, action.cellY, cs.layer);
 
@@ -144,6 +147,16 @@ var game = (function () {
                 console.log('the game is over, or there is a problem.');
 
             }
+
+        }
+
+    },
+
+    api = {
+
+        userAction : function (action) {
+
+            actions[machine.getState()](action);
 
         },
 
