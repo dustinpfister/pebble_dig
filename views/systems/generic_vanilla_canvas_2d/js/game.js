@@ -23,6 +23,29 @@ var game = (function () {
 
     },
 
+    submit = function (stack) {
+
+        console.log('submit');
+
+        peb({
+
+            action : 'pebblebar',
+            clientData : [{
+                    //plugin : 'land_game_submit',
+                    plugin : 'land_submit',
+                    landId : cs.landId,
+                    stack3Data : JSON.stringify(stack)
+                }
+            ]
+
+        }, function (data) {
+
+            console.log('submited');
+
+        });
+
+    }
+
     // compute and append dig count based on comp of stack 3 points val object.
     computeComp = function (point) {
 

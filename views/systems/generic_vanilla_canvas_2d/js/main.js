@@ -11,7 +11,7 @@
     var currentState = 'start',
     firstRun = true,
     lastTick = new Date(0),
-    tickRate = 1000,
+    tickRate = 33,
 
     machine = {
 
