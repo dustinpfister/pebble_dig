@@ -20,8 +20,10 @@ var canvas = (function () {
 
         if (cs.username) {
 
-            html = '{ user: ' + cs.username + ', pebble : ' + cs.wallet + '}<br>' +
-                'attacking user: ' + cs.attackingUsername + '; currentLayer :' + cs.layer + '; digs : ' + cs.digs + '; pebble in land: ' + cs.pebbleInLand + '; pebbleDelta: ' + cs.pebbleDelta;
+            html = '{ user: ' + cs.username +
+                'pebble : ' + cs.wallet + '}<br>' +
+                'attacking user: ' + cs.attackingUsername + '; currentLayer :' + 
+                cs.layer + '; digs : ' + cs.digs + '; pebble in land: ' + cs.pebbleInLand + '; pebbleDelta: ' + cs.pebbleDelta;
 
         }
 
