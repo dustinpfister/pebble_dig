@@ -92,7 +92,16 @@ var canvas = (function () {
 
         // EVENTS
         dom.addEventListener('mousedown', function (e) {
-
+			
+			var box = e.target.getBoundingClientRect(),
+            cs = game.getCS();
+            x = Math.floor(e.clientX - box.left),
+            y = Math.floor(e.clientY - box.top);
+			
+			game.userAction(e.type,x,y);
+            
+			
+/*
             var box = e.target.getBoundingClientRect(),
             cs = game.getCS();
             x = Math.floor(e.clientX - box.left),
@@ -167,6 +176,7 @@ var canvas = (function () {
                 console.log('the game is over');
 
             }
+			*/
 
         });
 

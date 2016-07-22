@@ -25,6 +25,13 @@ var game = (function () {
 
     api = {
 
+        userAction : function (type, x, y) {
+
+            console.log('user action type: ' + type);
+            console.log('position: ' + x + ',' + y);
+
+        },
+
         newGame : function (type) {
 
             // just go ahead and start a new game for now.
