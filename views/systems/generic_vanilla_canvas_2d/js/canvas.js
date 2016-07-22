@@ -11,6 +11,23 @@ var canvas = (function () {
     var dom,
     ctx,
 
+    drawInfo = function () {
+
+        var cs = game.getCS(),
+        dom = document.getElementById('game_info_area'),
+
+        html = '';
+
+        if (cs.username) {
+
+            html = '{ user: ' + cs.username + ', pebble : ' + cs.wallet + '}<br>' +
+                'attacking user: ' + cs.attackingUsername + '; currentLayer :' + cs.layer + '; digs : ' + cs.digs + '; pebble in land: ' + cs.pebbleInLand + '; pebbleDelta: ' + cs.pebbleDelta;
+
+        }
+
+        dom.innerHTML = html;
+    },
+
     drawStack = function (layer) {
 
         var z = layer,
@@ -28,7 +45,6 @@ var canvas = (function () {
         y = 0;
 
         if (stack.points.length > 0) {
-
             while (y < yLen) {
 
                 x = 0;
@@ -92,6 +108,7 @@ var canvas = (function () {
 
             console.log('okay thats not the problem');
 
+            drawInfo();
             drawStack();
 
         }
