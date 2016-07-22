@@ -25,20 +25,76 @@ var game = (function () {
 
     api = {
 
-	    /*
-        userAction : function (type, x, y) {
+        userAction : function (action) {
 
-            console.log('user action type: ' + type);
-            console.log('position: ' + x + ',' + y);
+            var point = stack.getPoint(action.cellX, action.cellY, cs.layer);
+
+            if (!cs.gameOver && stack.points.length > 0) {
+
+                // drop down only on empty comp
+                if (point.val.comp.length === 0) {
+
+                    console.log('droping down');
+
+                    cs.layer += 1;
+
+                    if (cs.layer >= stack.d) {
+
+                        cs.layer = stack.d - 1;
+
+                    }
+
+                } else {
+
+                    if (cs.digs <= 0) {
+
+                        console.log('you are out of digs!');
+
+                    } else {
+
+                        if (point.hp === undefined) {
+
+                            computeComp(point);
+
+                        }
+
+                        if (point.hp) {
+
+                            console.log('digging');
+
+                            cs.digs -= 1;
+                            point.hp -= 1;
+
+                        }
+
+                        if (point.hp <= 0) {
+
+                            console.log('done digging');
+
+                            cs.pebbleDelta += point.val.amount;
+                            point.val.comp = [];
+                        }
+
+                        if (cs.digs <= 0) {
+
+                            console.log('out of digs, the game is over.');
+
+                            cs.gameOver = true;
+                            submit(stack);
+
+                        }
+
+                    }
+
+                }
+
+            } else {
+
+                console.log('the game is over, or there is a problem.');
+
+            }
 
         },
-		*/
-		
-		userAction : function(action){
-			
-			console.log(action);
-			
-		},
 
         newGame : function (type) {
 
