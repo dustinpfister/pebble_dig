@@ -6,7 +6,7 @@
  *
  */
 
-(function () {
+var machine = (function () {
 
     var currentState = 'start',
     firstRun = true,
@@ -78,6 +78,16 @@
     };
 
     loop();
+
+    return {
+
+        getState : function () {
+
+            return currentState;
+
+        }
+
+    };
 
 }
     ());
