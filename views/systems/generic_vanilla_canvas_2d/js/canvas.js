@@ -87,6 +87,91 @@ var canvas = (function () {
 
     },
 
+    // attach events to the current canvas
+    attachEvents = function () {
+
+        // EVENTS
+        dom.addEventListener('mousedown', function (e) {
+
+            var box = e.target.getBoundingClientRect(),
+            cs = game.getCS();
+            x = Math.floor(e.clientX - box.left),
+            y = Math.floor(e.clientY - box.top),
+            pxWidth = 640 / stack.w,
+            pxHeight = 480 / stack.h,
+            cellX = Math.floor(x / pxWidth),
+            cellY = Math.floor(y / pxHeight),
+            point = stack.getPoint(cellX, cellY, cs.layer),
+            
+
+            e.preventDefault();
+
+            if (!cs.gameOver) {
+
+                // drop down only on empty comp
+                if (point.val.comp.length === 0) {
+
+                    console.log('droping down');
+
+                    cs.layer += 1;
+
+                    if (cs.layer >= stack.d) {
+
+                        cs.layer = stack.d - 1;
+
+                    }
+
+                } else {
+
+                    if (cs.digs <= 0) {
+
+                        console.log('you are out of digs!');
+
+                    } else {
+
+                        //console.log('time to dig');
+                        console.log(point.val);
+
+                        if (point.hp === undefined) {
+
+                            computeComp(point);
+
+                        }
+
+                        if (point.hp) {
+
+                            cs.digs -= 1;
+                            point.hp -= 1;
+
+                        }
+
+                        if (point.hp <= 0) {
+
+                            cs.pebbleDelta += point.val.amount;
+                            point.val.comp = [];
+                        }
+
+                        if (cs.digs <= 0) {
+
+                            cs.gameOver = true;
+                            submit(stack);
+
+                        }
+
+                    }
+
+                }
+
+            } else {
+
+                console.log('the game is over');
+
+            }
+
+        });
+
+    },
+
     api = {
 
         // use the given hard coded canvas element
@@ -97,6 +182,8 @@ var canvas = (function () {
 
             dom.width = 640;
             dom.height = 480;
+
+            attachEvents();
 
         },
 
