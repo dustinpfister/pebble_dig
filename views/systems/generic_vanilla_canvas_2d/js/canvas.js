@@ -92,16 +92,28 @@ var canvas = (function () {
 
         // EVENTS
         dom.addEventListener('mousedown', function (e) {
-			
-			var box = e.target.getBoundingClientRect(),
-            cs = game.getCS();
+
+            var box = e.target.getBoundingClientRect(),
             x = Math.floor(e.clientX - box.left),
-            y = Math.floor(e.clientY - box.top);
-			
-			game.userAction(e.type,x,y);
-            
-			
-/*
+            y = Math.floor(e.clientY - box.top),
+            cellWidth = 640 / stack.w,
+            cellHeight = 480 / stack.h;
+
+            //game.userAction(e.type,x,y);
+
+            game.userAction({
+                e : e,
+                type : e.type,
+                x : x,
+                y : y,
+                cellWidth : cellWidth,
+                cellHeight : cellHeight,
+                cellX : Math.floor(x / cellWidth),
+                cellY : Math.floor(y / cellHeight),
+
+            });
+
+            /*
             var box = e.target.getBoundingClientRect(),
             cs = game.getCS();
             x = Math.floor(e.clientX - box.left),
@@ -111,72 +123,72 @@ var canvas = (function () {
             cellX = Math.floor(x / pxWidth),
             cellY = Math.floor(y / pxHeight),
             point = stack.getPoint(cellX, cellY, cs.layer),
-            
+
 
             e.preventDefault();
 
             if (!cs.gameOver) {
 
-                // drop down only on empty comp
-                if (point.val.comp.length === 0) {
+            // drop down only on empty comp
+            if (point.val.comp.length === 0) {
 
-                    console.log('droping down');
+            console.log('droping down');
 
-                    cs.layer += 1;
+            cs.layer += 1;
 
-                    if (cs.layer >= stack.d) {
+            if (cs.layer >= stack.d) {
 
-                        cs.layer = stack.d - 1;
+            cs.layer = stack.d - 1;
 
-                    }
-
-                } else {
-
-                    if (cs.digs <= 0) {
-
-                        console.log('you are out of digs!');
-
-                    } else {
-
-                        //console.log('time to dig');
-                        console.log(point.val);
-
-                        if (point.hp === undefined) {
-
-                            computeComp(point);
-
-                        }
-
-                        if (point.hp) {
-
-                            cs.digs -= 1;
-                            point.hp -= 1;
-
-                        }
-
-                        if (point.hp <= 0) {
-
-                            cs.pebbleDelta += point.val.amount;
-                            point.val.comp = [];
-                        }
-
-                        if (cs.digs <= 0) {
-
-                            cs.gameOver = true;
-                            submit(stack);
-
-                        }
-
-                    }
-
-                }
+            }
 
             } else {
 
-                console.log('the game is over');
+            if (cs.digs <= 0) {
+
+            console.log('you are out of digs!');
+
+            } else {
+
+            //console.log('time to dig');
+            console.log(point.val);
+
+            if (point.hp === undefined) {
+
+            computeComp(point);
 
             }
-			*/
+
+            if (point.hp) {
+
+            cs.digs -= 1;
+            point.hp -= 1;
+
+            }
+
+            if (point.hp <= 0) {
+
+            cs.pebbleDelta += point.val.amount;
+            point.val.comp = [];
+            }
+
+            if (cs.digs <= 0) {
+
+            cs.gameOver = true;
+            submit(stack);
+
+            }
+
+            }
+
+            }
+
+            } else {
+
+            console.log('the game is over');
+
+            }
+             */
 
         });
 

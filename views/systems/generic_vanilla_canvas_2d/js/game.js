@@ -25,12 +25,20 @@ var game = (function () {
 
     api = {
 
+	    /*
         userAction : function (type, x, y) {
 
             console.log('user action type: ' + type);
             console.log('position: ' + x + ',' + y);
 
         },
+		*/
+		
+		userAction : function(action){
+			
+			console.log(action);
+			
+		},
 
         newGame : function (type) {
 
