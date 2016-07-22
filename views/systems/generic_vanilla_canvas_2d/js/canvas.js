@@ -28,9 +28,9 @@ var canvas = (function () {
         dom.innerHTML = html;
     },
 
-    drawStack = function (layer) {
+    drawStack = function () {
 
-        var z = layer,
+        var z = game.getCS().layer,
         zLen = stack.d,
         x,
         y,
@@ -105,8 +105,6 @@ var canvas = (function () {
         start : function () {},
 
         game : function () {
-
-            console.log('okay thats not the problem');
 
             drawInfo();
             drawStack();

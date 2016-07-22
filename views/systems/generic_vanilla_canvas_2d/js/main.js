@@ -41,12 +41,9 @@
 
             firstRun : function () {
 
-                console.log('game state: first run.');
 
             },
             tick : function () {
-
-                console.log('game state: tick.');
 
             }
 
