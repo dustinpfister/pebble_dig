@@ -52,6 +52,13 @@ var machine = (function () {
 
         },
 
+        gameOver : {
+
+            firstRun : function () {},
+            tick : function () {}
+
+        }
+
     },
 
     loop = function () {

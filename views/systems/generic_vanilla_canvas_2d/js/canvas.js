@@ -125,6 +125,12 @@ var canvas = (function () {
             drawInfo();
             drawStack();
 
+        },
+
+        gameOver : function () {
+
+            drawInfo();
+
         }
 
     },

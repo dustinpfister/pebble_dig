@@ -87,19 +87,20 @@ var game = (function () {
 
                 //console.log('fed');
 
-				api.newGame('fed');
-				machine.changeState('game');
-				
+                api.newGame('fed');
+                machine.changeState('game');
+
             } else {
 
                 //console.log('pvp');
 
-				api.newGame('pvp');
-				machine.changeState('game');
-				
+                api.newGame('pvp');
+                machine.changeState('game');
+
             }
 
         },
+
         game : function (action) {
 
             var point = stack.getPoint(action.cellX, action.cellY, cs.layer);
@@ -169,7 +170,9 @@ var game = (function () {
 
             }
 
-        }
+        },
+
+        gameOver : function (action) {},
 
     },
 
