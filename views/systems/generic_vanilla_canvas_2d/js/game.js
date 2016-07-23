@@ -79,11 +79,21 @@ var game = (function () {
 
         start : function (action) {},
         title : function (action) {
-			
-			console.log('yes we are good so far with title.');
-			console.log(action);
-			
-		},
+
+            //console.log('yes we are good so far with title.');
+            //console.log(action);
+
+            if (action.x < 320) {
+
+                console.log('fed');
+
+            } else {
+
+                console.log('pvp');
+
+            }
+
+        },
         game : function (action) {
 
             var point = stack.getPoint(action.cellX, action.cellY, cs.layer);
