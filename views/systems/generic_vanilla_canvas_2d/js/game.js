@@ -262,3 +262,61 @@ var game = (function () {
 
 }
     ());
+
+// the egg object contains methods that can be used to cheat, automate the game, ect.
+var egg = (function () {
+
+    return {
+
+        // dig all points in the stack
+        digAll : function () {
+
+            console.log('digging all points...');
+            console.log('num of points: ' + stack.points.length);
+
+            stack.points.forEach(function (point) {
+
+                if (typeof point.val === 'object') {
+
+                    // and empty comp array counts as empty space
+                    point.val.comp = [];
+
+                }
+
+            });
+
+            // return empty string to console
+            return '';
+
+        },
+
+        submitNow : function () {
+
+            console.log('submitting the current stack to land_submit plugin');
+
+            peb({
+
+                action : 'pebblebar',
+                clientData : [{
+                        //plugin : 'land_game_submit',
+                        plugin : 'land_submit',
+                        landId : game.getCS().landId,
+                        stack3Data : JSON.stringify(stack)
+                    }
+                ]
+
+            }, function (data) {
+
+                console.log('the stack was submitted');
+
+            });
+
+            // return empty string to console.
+            return '';
+
+        }
+
+    };
+
+}
+    ());
