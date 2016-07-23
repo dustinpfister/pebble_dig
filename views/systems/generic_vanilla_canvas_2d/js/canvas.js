@@ -22,7 +22,7 @@ var canvas = (function () {
 
             html = '{ user: ' + cs.username +
                 ', pebble : ' + cs.wallet + '}<br>' +
-                'attacking user: ' + cs.attackingUsername + '; currentLayer :' +
+                'attacking user: ' + cs.attackingUsername + '; land id: '+ cs.landId + '; currentLayer :' +
                 cs.layer + '; digs : ' + cs.digs + '; pebble in land: ' + cs.pebbleInLand + '; pebbleDelta: ' + cs.pebbleDelta;
 
         }
