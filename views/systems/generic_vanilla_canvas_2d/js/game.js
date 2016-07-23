@@ -157,6 +157,7 @@ var game = (function () {
 
                             cs.gameOver = true;
                             submit(stack);
+                            machine.changeState('gameOver');
 
                         }
 
@@ -172,7 +173,11 @@ var game = (function () {
 
         },
 
-        gameOver : function (action) {},
+        gameOver : function (action) {
+
+            machine.changeState('title');
+
+        },
 
     },
 

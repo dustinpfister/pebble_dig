@@ -131,6 +131,12 @@ var canvas = (function () {
 
             drawInfo();
 
+            ctx.fillStyle = '#ffffff';
+            ctx.textAlign = 'center';
+            ctx.font = '100px courier';
+            ctx.fillText('GAME OVER', 320, 220);
+
+
         }
 
     },
