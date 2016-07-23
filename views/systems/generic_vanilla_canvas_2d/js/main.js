@@ -85,6 +85,13 @@ var machine = (function () {
 
             return currentState;
 
+        },
+
+        changeState : function (state) {
+
+            currentState = state;
+            firstRun = true;
+
         }
 
     };
