@@ -225,6 +225,8 @@ var game = (function () {
                                 cs.pebbleInLand = res.game.wallet;
                                 cs.pebbleDelta = 0;
                                 cs.landId = res.game.landId;
+
+                                cs.layer = 0;
                                 cs.gameOver = false;
 
                             } else {
