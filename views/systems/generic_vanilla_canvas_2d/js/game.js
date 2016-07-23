@@ -78,7 +78,12 @@ var game = (function () {
     actions = {
 
         start : function (action) {},
-        title : function (action) {},
+        title : function (action) {
+			
+			console.log('yes we are good so far with title.');
+			console.log(action);
+			
+		},
         game : function (action) {
 
             var point = stack.getPoint(action.cellX, action.cellY, cs.layer);

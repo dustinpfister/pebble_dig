@@ -23,14 +23,14 @@ var machine = (function () {
                 canvas.useCanvas('thecanvas');
 
                 // just start a game here for now?
-                game.newGame('fed');
+                //game.newGame('fed');
 
             },
             tick : function () {
 
                 console.log('start state: tick.');
 
-                currentState = 'game';
+                currentState = 'title';
                 firstRun = true;
 
             }

@@ -22,7 +22,7 @@ var canvas = (function () {
 
             html = '{ user: ' + cs.username +
                 'pebble : ' + cs.wallet + '}<br>' +
-                'attacking user: ' + cs.attackingUsername + '; currentLayer :' + 
+                'attacking user: ' + cs.attackingUsername + '; currentLayer :' +
                 cs.layer + '; digs : ' + cs.digs + '; pebble in land: ' + cs.pebbleInLand + '; pebbleDelta: ' + cs.pebbleDelta;
 
         }
@@ -106,7 +106,19 @@ var canvas = (function () {
 
         start : function () {},
 
-        title : function () {},
+        title : function () {
+
+            drawInfo();
+            ctx.fillStyle = '#ffffff';
+            ctx.textAlign = 'center';
+            ctx.font = '50px courier';
+            ctx.fillText('pebble dig!', 320, 220);
+
+            ctx.font = '25px courier';
+            ctx.fillText('solo game', 160, 350);
+            ctx.fillText('pvp game', 480, 350);
+
+        },
 
         game : function () {
 
