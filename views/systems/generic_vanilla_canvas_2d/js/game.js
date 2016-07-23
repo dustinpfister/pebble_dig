@@ -85,12 +85,18 @@ var game = (function () {
 
             if (action.x < 320) {
 
-                console.log('fed');
+                //console.log('fed');
 
+				api.newGame('fed');
+				machine.changeState('game');
+				
             } else {
 
-                console.log('pvp');
+                //console.log('pvp');
 
+				api.newGame('pvp');
+				machine.changeState('game');
+				
             }
 
         },
