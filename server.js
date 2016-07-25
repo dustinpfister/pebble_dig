@@ -18,7 +18,8 @@ var express = require('express'), session = require('express-session'), MongoSto
     // client system in use:
 //, clientSystem = 'command_only'
 //, clientSystem = 'dig_2d_vanilla'
-, clientSystem = 'generic_vanilla_canvas_2d'
+//, clientSystem = 'generic_vanilla_canvas_2d'
+clientSystem = 'vanilla'
 
 
     // users
