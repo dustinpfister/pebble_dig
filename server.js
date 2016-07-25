@@ -143,6 +143,26 @@ app.get('*', function (req, res, next) {
 app.get('/', function (req, res, next) {
 
     clients.getClientSystem(req, function(clientSystem){
+
+		//console.log('server.js : client system = ' + clientSystem);
+
+		pebble.getReserve(function (reserve) {
+
+        res.render('systems/' + clientSystem + '/main', {
+
+            req : req,
+            reserve : reserve,
+            user : req.user
+
+        });
+
+    });
+		
+    });
+
+/*
+
+    clients.getClientSystem(req, function(clientSystem){
 		
 		console.log('server.js : client system = ' + clientSystem);
 		
@@ -160,6 +180,8 @@ app.get('/', function (req, res, next) {
 
     });
 
+*/
+	
 });
 
 // all posts are sent to root (except for the login, and sign up paths)
