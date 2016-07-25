@@ -20,7 +20,7 @@ var express = require('express'), session = require('express-session'), MongoSto
 //, clientSystem = 'dig_2d_vanilla'
 //, clientSystem = 'generic_vanilla_canvas_2d'
 , clientSystem = 'vanilla'
-
+, clients = require('./lib/clients.js')
 
     // users
 , users = require('./lib/users.js')
@@ -141,6 +141,12 @@ app.get('*', function (req, res, next) {
 
 // root get requests
 app.get('/', function (req, res, next) {
+
+    clients.getClientSystem(req, function(clientSystem){
+		
+		console.log('server.js : client system = ' + clientSystem);
+		
+	});
 
     pebble.getReserve(function (reserve) {
 
