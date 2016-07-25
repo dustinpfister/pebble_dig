@@ -54,10 +54,33 @@
 
     <div class="container">
 
-      <div class="starter-template">
+        <div class="starter-template">
+	  
+	  
+	    <canvas id = "thecanvas" > Your Browsers needs to support canvas for this to work. </canvas>
+
+        <div>
+
+            <h1>Pebble Dig (jboot client)</h1>
+
+            <p>username: <%= user.username %> <a href="/logout">logout</a></p>
+
+            <div id="game_info_area">
+
+                <p>This is the game info area. If you are reading this you may have javascript disabled, 
+                something went wrong, or you are cheking out my source code.</p>
+
+            </div>
+
+        </div>
+	  
+	  
+	  <!--
         <h1>Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
+		
+		-->
+        </div>
 
     </div><!-- /.container -->
 
@@ -71,17 +94,24 @@
     <script src="systems/jboot/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
-	
-	<script>
-	
-	document.getElementById('actionspan').addEventListener('click', function(){
-	
-	    console.log('the option was selected');
-	
-	});
-	
-	//$('#actionSpan')
-	
-	</script>
+
+    <!-- quick test delete later -->
+    <script>
+
+    document.getElementById('actionspan').addEventListener('click', function(){
+
+        console.log('the option was selected');
+
+    });
+
+    </script>
+
+    <!-- game scripts -->
+    <script src = "/js/dig_peb.js" ></script>
+    <script src = "/js/dig_stack_3.js" ></script>
+    <script src="/systems/jboot/js/game.js"></script>
+    <script src="/systems/jboot/js/canvas.js"></script>
+    <script src="/systems/jboot/js/main.js"></script>
+
   </body>
 </html>
