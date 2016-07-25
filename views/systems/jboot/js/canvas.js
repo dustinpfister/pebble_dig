@@ -150,8 +150,8 @@ var canvas = (function () {
             var box = e.target.getBoundingClientRect(),
             x = Math.floor(e.clientX - box.left),
             y = Math.floor(e.clientY - box.top),
-            cellWidth = 640 / stack.w,
-            cellHeight = 480 / stack.h;
+            cellWidth = dom.width / stack.w,
+            cellHeight = dom.height / stack.h;
 
             e.preventDefault();
 
