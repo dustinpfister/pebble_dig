@@ -1,7 +1,16 @@
 body {
   padding-top: 50px;
 }
+
 .jboot-content {
   padding: 0px 15px;
   text-align: center;
+}
+
+#thecanvas{
+
+    position:fixed;
+    left:0px;
+    top:50px;
+
 }

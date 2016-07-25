@@ -38,8 +38,8 @@ var canvas = (function () {
         y,
         xLen = stack.w,
         yLen = stack.h,
-        pxWidth = 640 / xLen,
-        pxHeight = 480 / yLen,
+        pxWidth = dom.width / xLen,
+        pxHeight = dom.height / yLen,
         ci,
         ciLen,
         point;
@@ -185,6 +185,13 @@ var canvas = (function () {
             attachEvents();
 
         },
+		
+		resize : function(w,h){
+			
+			dom.width = w;
+			dom.height = h;
+			
+		},
 
         draw : function (state) {
 
