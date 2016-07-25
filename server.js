@@ -100,6 +100,10 @@ app.get('*', function (req, res, next) {
     len = visitPaths.length,
     okay;
 
+	clients.getClientSystem(req, function(clientSystem){
+		
+		req.clientSystem = clientSystem;
+	
     // check if logged in
     if (req.user) {
 
@@ -136,19 +140,21 @@ app.get('*', function (req, res, next) {
         }
 
     }
+	
+	});
 
 });
 
 // root get requests
 app.get('/', function (req, res, next) {
 
-    clients.getClientSystem(req, function(clientSystem){
+    //clients.getClientSystem(req, function(clientSystem){
 
 		//console.log('server.js : client system = ' + clientSystem);
 
 		pebble.getReserve(function (reserve) {
 
-        res.render('systems/' + clientSystem + '/main', {
+        res.render('systems/' + req.clientSystem + '/main', {
 
             req : req,
             reserve : reserve,
@@ -158,7 +164,7 @@ app.get('/', function (req, res, next) {
 
     });
 		
-    });
+    //});
 
 /*
 
@@ -209,7 +215,7 @@ app.post('/', function (req, res, next) {
 // login path
 app.get('/login', function (req, res, next) {
 
-    res.render('systems/' + clientSystem + '/login', {});
+    res.render('systems/' + req.clientSystem + '/login', {});
 
 });
 
@@ -239,7 +245,7 @@ app.get('/logout', function (req, res) {
 // the sign up path
 app.get('/signup', function (req, res, next) {
 
-    res.render('systems/' + clientSystem + '/signup', {});
+    res.render('systems/' + req.clientSystem + '/signup', {});
 
 });
 
