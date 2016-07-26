@@ -109,6 +109,11 @@
     <script>
 
         canvas.resize(window.innerWidth,window.innerHeight);
+        $(window).on('resize', function(){
+
+            canvas.resize(window.innerWidth,window.innerHeight);
+
+        });
 
     </script>
 
