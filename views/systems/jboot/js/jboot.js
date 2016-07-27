@@ -5,29 +5,36 @@
  *    some javascript for jboot client system for pebble_dig
  *
  */
- 
+
 (function () {
 
     // resize
     var onResize = function () {
 
-        var w = window.innerWidth,
-        h = window.innerHeight - 55,
-        l = 0;
+        var canWidth = $('#thecanvas').width(),
+        winWidth = window.innerWidth,
+        winHeight = window.innerHeight;
 
-        if (w > h) {
+        if (winWidth > winHeight) {
 
-            l = Math.floor((w - h) / 2);
-            w = h;
+            canvas.resize(
+                winHeight,
+                winHeight-65);
 
         } else {
 
-            h = w;
+            canvas.resize(
+                winWidth,
+                winWidth-65);
 
         }
+        $('#thecanvas').css('left', '0px');
 
-        canvas.resize(w, h);
-        $('#thecanvas').css('left', l + 'px');
+        // new canvas width
+        canWidth = $('#thecanvas').width();
+
+        // center
+        $('#thecanvas').css('left', Math.floor( (winWidth - canWidth) / 2 ) + 'px');
 
     };
 
