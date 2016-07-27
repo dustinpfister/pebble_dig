@@ -50,12 +50,23 @@ var canvas = (function () {
 	
 	drawStack = function(){
 		
+		var curLayer = game.getCS().layer;
+		
 		ctx.clearRect(0,0,dom.width,dom.height);
 		
-		drawStackLayer();
+		if(curLayer < stack.d-1){
+		
+		
+		    drawStackLayer(curLayer + 1,true);
+		
+		}
+			
+			drawStackLayer(curLayer, false);
+		
+		
 	},
 
-    drawStackLayer = function (z) {
+    drawStackLayer = function (z, lower) {
 
         var zLen = stack.d,
         x,
@@ -64,6 +75,7 @@ var canvas = (function () {
         yLen = stack.h,
         pxWidth = dom.width / xLen,
         pxHeight = dom.height / yLen,
+		alpha = 1,
         ci,
         ciLen,
         point;
@@ -75,6 +87,12 @@ var canvas = (function () {
             z = game.getCS().layer
 
         }
+		
+		if(lower){
+			
+			alpha = .4;
+			
+		}
 
         if (stack.points.length > 0) {
 
@@ -91,12 +109,12 @@ var canvas = (function () {
                         if (point.val.comp[0].id === 0) {
 
                             // if dirt
-                            ctx.fillStyle = 'rgba(255,255,0,1)';
+                            ctx.fillStyle = 'rgba(255,255,0,'+alpha+')';
 
                         } else {
 
                             // else rock
-                            ctx.fillStyle = 'rgba(128,128,128,1)';
+                            ctx.fillStyle = 'rgba(128,128,128,'+alpha+')';
 
                         }
 						
