@@ -83,75 +83,7 @@
     <script src="/systems/jboot/js/game.js"></script>
     <script src="/systems/jboot/js/canvas.js"></script>
     <script src="/systems/jboot/js/main.js"></script>
-    <script>
-
-var onResize = function () {
-
-    //var w = window.innerWidth-20,
-	var w = window.innerWidth,
-    h = window.innerHeight-55, l = 0;
-
-    if (w > h) {
-
-        l = Math.floor((w - h)/2);
-        w = h;
-
-    } else {
-
-        h = w;
-
-    }
-
-    canvas.resize(w, h);
-    console.log('left: ' + l);
-	$('#thecanvas').css('left',l+'px');
-	
-};
-
-//canvas.resize(window.innerWidth, window.innerHeight);
-onResize();
-$(window).on('resize', onResize);
-
-    </script>
-
-    <!-- quick test delete later -->
-    <script>
-
-    /*
-    document.getElementById('actionspan').addEventListener('click', function(){
-
-        //console.log('the option was selected');
-
-        document.getElementById('nav-button').click();
-
-    });
-    */
-    
-    $('.nav-option').on('click', function(e){
-
-        var option = e.target.innerHTML;
-
-        if(option === 'Dig Fed'){
-        
-            api.newGame('fed');
-            machine.changeState('game');
-        
-        }
-        
-        if(option === 'Dig User'){
-        
-            api.newGame('pvp');
-            machine.changeState('game');
-        
-        }
-    
-        console.log(e.target.innerHTML);
-    
-        $('#nav-button').click();
-    
-    });
-
-    </script>
+    <script src="/systems/jboot/js/jboot.js"></script>
 
   </body>
 </html>
