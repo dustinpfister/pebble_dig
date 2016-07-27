@@ -16,9 +16,15 @@ body {
 }
 
 .nav-desc{
-	
-	margin-left: 15px;
-	color: #777;
-	border-bottom: 1px solid #777;
-	
+
+    margin-left: 15px;
+    color: #777;
+    border-bottom: 1px solid #777;
+
+}
+
+#game_info_area{
+
+    color: #777;
+
 }

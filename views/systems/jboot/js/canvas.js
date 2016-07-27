@@ -10,7 +10,7 @@ var canvas = (function () {
 
     var dom,
     ctx,
-
+/*
     drawInfo = function () {
 
         var cs = game.getCS(),
@@ -24,6 +24,24 @@ var canvas = (function () {
                 ', pebble : ' + cs.wallet + '}<br>' +
                 'attacking user: ' + cs.attackingUsername + '; land id: ' + cs.landId + '; currentLayer :' +
                 cs.layer + '; digs : ' + cs.digs + '; pebble in land: ' + cs.pebbleInLand + '; pebbleDelta: ' + cs.pebbleDelta;
+
+        }
+
+        dom.innerHTML = html;
+    },
+*/
+    drawInfo = function () {
+
+        var cs = game.getCS(),
+        dom = document.getElementById('game_info_area'),
+
+        html = '';
+
+        if (cs.username) {
+
+            html = '{ user: ' + cs.username + ', pebble : ' + cs.wallet + '}<br>' +
+                '{ digs : ' + cs.digs + ', loot: ' + cs.pebbleDelta + '\/' + cs.pebbleInLand+
+                ', @user: ' +cs.attackingUsername+' }'
 
         }
 
