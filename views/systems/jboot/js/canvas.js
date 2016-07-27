@@ -213,6 +213,8 @@ var canvas = (function () {
 
             dom.width = w;
             dom.height = h;
+            dom.style.width = w;
+            dom.style.height = h;
 
         },
 

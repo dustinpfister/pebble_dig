@@ -28,7 +28,7 @@
                 winWidth-65);
 
         }
-        $('#thecanvas').css('left', '0px');
+        //$('#thecanvas').css('left', '0px');
 
         // new canvas width
         canWidth = $('#thecanvas').width();
