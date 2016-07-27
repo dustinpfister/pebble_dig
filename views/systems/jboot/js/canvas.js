@@ -22,7 +22,7 @@ var canvas = (function () {
 
             html = '{ user: ' + cs.username +
                 ', pebble : ' + cs.wallet + '}<br>' +
-                'attacking user: ' + cs.attackingUsername + '; land id: '+ cs.landId + '; currentLayer :' +
+                'attacking user: ' + cs.attackingUsername + '; land id: ' + cs.landId + '; currentLayer :' +
                 cs.layer + '; digs : ' + cs.digs + '; pebble in land: ' + cs.pebbleInLand + '; pebbleDelta: ' + cs.pebbleDelta;
 
         }
@@ -136,7 +136,6 @@ var canvas = (function () {
             ctx.font = '100px courier';
             ctx.fillText('GAME OVER', 320, 220);
 
-
         }
 
     },
@@ -185,13 +184,13 @@ var canvas = (function () {
             attachEvents();
 
         },
-		
-		resize : function(w,h){
-			
-			dom.width = w;
-			dom.height = h;
-			
-		},
+
+        resize : function (w, h) {
+
+            dom.width = w;
+            dom.height = h;
+
+        },
 
         draw : function (state) {
 

@@ -108,12 +108,28 @@
     <script src="/systems/jboot/js/main.js"></script>
     <script>
 
-        canvas.resize(window.innerWidth,window.innerHeight);
-        $(window).on('resize', function(){
+var onResize = function () {
 
-            canvas.resize(window.innerWidth,window.innerHeight);
+    var w = window.innerWidth,
+    h = window.innerHeight;
 
-        });
+    if (w > h) {
+
+        w = h;
+
+    } else {
+
+        h = w;
+
+    }
+
+    canvas.resize(w, h);
+
+};
+
+//canvas.resize(window.innerWidth, window.innerHeight);
+onResize();
+$(window).on('resize', onResize);
 
     </script>
 
