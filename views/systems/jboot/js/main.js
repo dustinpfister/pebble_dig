@@ -47,7 +47,11 @@ var machine = (function () {
 
         game : {
 
-            firstRun : function () {},
+            firstRun : function () {
+				
+				canvas.clear();
+				
+			},
             tick : function () {}
 
         },

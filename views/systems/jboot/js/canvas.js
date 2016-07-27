@@ -47,11 +47,15 @@ var canvas = (function () {
 
         dom.innerHTML = html;
     },
+	
+	drawStack = function(){
+		
+		
+	},
 
-    drawStack = function () {
+    drawStackLayer = function (z) {
 
-        var z = game.getCS().layer,
-        zLen = stack.d,
+        var zLen = stack.d,
         x,
         y,
         xLen = stack.w,
@@ -64,26 +68,20 @@ var canvas = (function () {
 
         y = 0;
 
+        if(z === undefined){
+
+            z = game.getCS().layer
+
+        }
+
         if (stack.points.length > 0) {
+
             while (y < yLen) {
 
                 x = 0;
                 while (x < xLen) {
 
                     point = stack.getPoint(x, y, z);
-
-                    /*
-
-                    ALERT! we will have to do soething like this in the future
-
-                    ci = 0, ciLen = point.val.comp.length;
-                    while(ci < ciLen){
-
-
-
-                    ci += 1;
-                    }
-                     */
 
                     if (point.val.comp.length > 0) {
 
@@ -119,6 +117,69 @@ var canvas = (function () {
         }
 
     },
+	
+	
+/*
+    drawStack = function () {
+
+        var z = game.getCS().layer,
+        zLen = stack.d,
+        x,
+        y,
+        xLen = stack.w,
+        yLen = stack.h,
+        pxWidth = dom.width / xLen,
+        pxHeight = dom.height / yLen,
+        ci,
+        ciLen,
+        point;
+
+        y = 0;
+
+        if (stack.points.length > 0) {
+
+            while (y < yLen) {
+
+                x = 0;
+                while (x < xLen) {
+
+                    point = stack.getPoint(x, y, z);
+
+                    if (point.val.comp.length > 0) {
+
+                        // just render based on comp[0] for now
+                        if (point.val.comp[0].id === 0) {
+
+                            // if dirt
+                            ctx.fillStyle = 'rgba(255,255,0,1)';
+
+                        } else {
+
+                            // else rock
+                            ctx.fillStyle = 'rgba(128,128,128,1)';
+
+                        }
+
+                    } else {
+
+                        ctx.fillStyle = '#000000';
+
+                    }
+
+                    ctx.fillRect(x * pxWidth, y * pxHeight, pxWidth, pxHeight);
+
+                    x += 1;
+
+                }
+
+                y += 1;
+
+            }
+
+        }
+
+    },
+	*/
 
     drawStates = {
 
@@ -126,9 +187,13 @@ var canvas = (function () {
 
         title : function () {
 
-           var wq = dom.width / 4,
-           hq = dom.height / 4;
+            var wq = dom.width / 4,
+            hq = dom.height / 4;
 
+		    ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, dom.width, dom.height);
+
+		   
             drawInfo();
             ctx.fillStyle = '#ffffff';
             ctx.textAlign = 'center';
@@ -153,6 +218,10 @@ var canvas = (function () {
             var wq = dom.width / 4,
             hq = dom.height / 4;
 
+			ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, dom.width, dom.height);
+
+			
             drawInfo();
 
             ctx.fillStyle = '#ffffff';
@@ -195,6 +264,12 @@ var canvas = (function () {
     },
 
     api = {
+		
+		clear : function(){
+			
+			ctx.clearRect(0,0,dom.width,dom.height)
+			
+		},
 
         // use the given hard coded canvas element
         useCanvas : function (canvasId) {
@@ -220,8 +295,8 @@ var canvas = (function () {
 
         draw : function (state) {
 
-            ctx.fillStyle = '#000000';
-            ctx.fillRect(0, 0, dom.width, dom.height);
+            //ctx.fillStyle = '#000000';
+            //ctx.fillRect(0, 0, dom.width, dom.height);
 
             drawStates[state]();
 
