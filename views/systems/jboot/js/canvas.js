@@ -126,15 +126,18 @@ var canvas = (function () {
 
         title : function () {
 
+           var wq = dom.width / 4,
+           hq = dom.height / 4;
+
             drawInfo();
             ctx.fillStyle = '#ffffff';
             ctx.textAlign = 'center';
             ctx.font = '50px courier';
-            ctx.fillText('pebble dig!', 320, 220);
+            ctx.fillText('pebble dig!', wq * 2, hq * 2);
 
             ctx.font = '25px courier';
-            ctx.fillText('solo game', 160, 350);
-            ctx.fillText('pvp game', 480, 350);
+            ctx.fillText('solo game', wq, dom.height - hq);
+            ctx.fillText('pvp game', wq * 3,dom.height - hq);
 
         },
 
@@ -147,12 +150,15 @@ var canvas = (function () {
 
         gameOver : function () {
 
+            var wq = dom.width / 4,
+            hq = dom.height / 4;
+
             drawInfo();
 
             ctx.fillStyle = '#ffffff';
             ctx.textAlign = 'center';
-            ctx.font = '100px courier';
-            ctx.fillText('GAME OVER', 320, 220);
+            ctx.font = 50 + 'px courier';
+            ctx.fillText('GAME OVER', wq*2, hq*2);
 
         }
 
