@@ -50,7 +50,9 @@ var canvas = (function () {
 	
 	drawStack = function(){
 		
+		ctx.clearRect(0,0,dom.width,dom.height);
 		
+		drawStackLayer();
 	},
 
     drawStackLayer = function (z) {
@@ -97,14 +99,12 @@ var canvas = (function () {
                             ctx.fillStyle = 'rgba(128,128,128,1)';
 
                         }
-
-                    } else {
-
-                        ctx.fillStyle = '#000000';
+						
+						ctx.fillRect(x * pxWidth, y * pxHeight, pxWidth, pxHeight);
 
                     }
 
-                    ctx.fillRect(x * pxWidth, y * pxHeight, pxWidth, pxHeight);
+                    
 
                     x += 1;
 
