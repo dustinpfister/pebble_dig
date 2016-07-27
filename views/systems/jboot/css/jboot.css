@@ -9,9 +9,9 @@ body {
 
 #thecanvas{
 
-    position:fixed;
+    position:relative;
     left:0px;
-    top:50px;
+    top:0px;
 
 }
 

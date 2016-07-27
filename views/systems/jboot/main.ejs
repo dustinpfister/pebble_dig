@@ -13,6 +13,7 @@
     <title>Pebble Dig</title>
 
     <!-- Bootstrap core CSS -->
+    <!--<link href="systems/jboot/css/bootstrap.css" rel="stylesheet">-->
     <link href="systems/jboot/css/bootstrap_dig.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -41,55 +42,28 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">Pebble Dig</a>
-		  <div id="game_info_area">
-		  </div>
+          <div id="game_info_area">
+          </div>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <!--<li class="active"><a href="#">Home</a></li>-->
-			<li><h3 class="nav-desc">new game:</h3></li>
+            <li><h3 class="nav-desc">new game:</h3></li>
             <li><a class="nav-option">Dig Fed</a></li>
-			<li><a class="nav-option">Dig User</a></li>
-			
-			<li><h3 class="nav-desc">User:</h3></li>
+            <li><a class="nav-option">Dig User</a></li>
+            
+            <li><h3 class="nav-desc">User:</h3></li>
             <li><a href="/logout">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-    <div class="container">
-
-        <div class="jboot-content">
-	  
-	  
-	    <canvas id = "thecanvas" > Your Browsers needs to support canvas for this to work. </canvas>
-
-        <div>
-
-            <h1>Pebble Dig (jboot client)</h1>
-
-            <p>username: <%= user.username %> <a href="/logout">logout</a></p>
-
-			<!--
-            <div id="game_info_area">
-
-                <p>This is the game info area. If you are reading this you may have javascript disabled, 
-                something went wrong, or you are cheking out my source code.</p>
-
-            </div>
-            -->
-        </div>
-	  
-	  
-	  <!--
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-		
-		-->
-        </div>
-
-    </div><!-- /.container -->
+    <!--<div class="container">-->
+        
+        <canvas id = "thecanvas" > Your Browsers needs to support canvas for this to work. </canvas>
+            
+    <!--</div>--><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -114,10 +88,11 @@
 var onResize = function () {
 
     var w = window.innerWidth,
-    h = window.innerHeight;
+    h = window.innerHeight, l = 0;
 
     if (w > h) {
 
+        l = Math.floor((w - h)/2);
         w = h;
 
     } else {
@@ -127,7 +102,9 @@ var onResize = function () {
     }
 
     canvas.resize(w, h);
-
+    console.log('left: ' + l);
+	$('#thecanvas').css('left',l+'px');
+	
 };
 
 //canvas.resize(window.innerWidth, window.innerHeight);
@@ -139,7 +116,7 @@ $(window).on('resize', onResize);
     <!-- quick test delete later -->
     <script>
 
-	/*
+    /*
     document.getElementById('actionspan').addEventListener('click', function(){
 
         //console.log('the option was selected');
@@ -147,31 +124,31 @@ $(window).on('resize', onResize);
         document.getElementById('nav-button').click();
 
     });
-	*/
-	
-	$('.nav-option').on('click', function(e){
-	
-	    var option = e.target.innerHTML;
-		
-		if(option === 'Dig Fed'){
-		
-		    api.newGame('fed');
+    */
+    
+    $('.nav-option').on('click', function(e){
+
+        var option = e.target.innerHTML;
+
+        if(option === 'Dig Fed'){
+        
+            api.newGame('fed');
             machine.changeState('game');
-		
-		}
-		
-		if(option === 'Dig User'){
-		
-		    api.newGame('pvp');
+        
+        }
+        
+        if(option === 'Dig User'){
+        
+            api.newGame('pvp');
             machine.changeState('game');
-		
-		}
-	
-	    console.log(e.target.innerHTML);
-	
-	    $('#nav-button').click();
-	
-	});
+        
+        }
+    
+        console.log(e.target.innerHTML);
+    
+        $('#nav-button').click();
+    
+    });
 
     </script>
 
