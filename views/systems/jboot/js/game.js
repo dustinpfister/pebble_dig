@@ -305,9 +305,10 @@ var egg = (function () {
                     }
                 ]
 
-            }, function (data) {
+            }, function (res) {
 
-                console.log('the stack was submitted');
+                console.log('egg.submitNow: the response');
+                console.log(res);
 
             });
 
