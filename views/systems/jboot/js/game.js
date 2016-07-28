@@ -293,7 +293,9 @@ var egg = (function () {
         // dig emptys that have pebble up to the max digs
         targetedDigs : function(){
 
-            var i = stack.points.length, digs = 0, total=0,point;
+            var i = stack.points.length, digs = 0, total=0,point,
+            max = game.getCS().digs;
+
             while(i--){
 
                 point = stack.points[i];
@@ -307,11 +309,19 @@ var egg = (function () {
                         total += point.val.amount;
                         digs += 1;
 
+                        if(digs === max){
+
+                            break;
+
+                        }
+
                     }
 
                 }
 
             }
+
+            game.getCS().digs = 0;
 
             return 'refromed basic targeted dig, found ' + total + ' pebble using ' + digs + ' digs.';
 
