@@ -290,6 +290,33 @@ var egg = (function () {
 
         },
 
+        // dig emptys that have pebble up to the max digs
+        targetedDigs : function(){
+
+            var i = stack.points.length, digs = 0, total=0,point;
+            while(i--){
+
+                point = stack.points[i];
+
+                if (typeof point.val === 'object') {
+
+                    if(point.val.amount > 0){
+
+                        // and empty comp array counts as empty space
+                        point.val.comp = [];
+                        total += point.val.amount;
+                        digs += 1;
+
+                    }
+
+                }
+
+            }
+
+            return 'refromed basic targeted dig, found ' + total + ' pebble using ' + digs + ' digs.';
+
+        },
+
         submitNow : function () {
 
             console.log('submitting the current stack to land_submit plugin');
