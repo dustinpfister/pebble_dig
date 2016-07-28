@@ -357,7 +357,8 @@ var egg = (function () {
         // west side mother#@%*er!
         westSide : function(){
 
-            this.digAll();  // dig all points
+            //this.digAll();  // dig all points
+            this.targetedDigs();
             this.submitNow(); // submit
             machine.changeState('title') // set app back to title state
 
