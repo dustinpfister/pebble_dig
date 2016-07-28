@@ -48,10 +48,10 @@ var machine = (function () {
         game : {
 
             firstRun : function () {
-				
-				canvas.clear();
-				
-			},
+
+                canvas.clear();
+
+            },
             tick : function () {}
 
         },

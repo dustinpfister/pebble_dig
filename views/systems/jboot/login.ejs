@@ -5,28 +5,88 @@
     
     <title>Pebble Dig</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="pebble dig the game">
+    <meta name="author" content="Dustin Pfister">
+    <!--<link rel="icon" href="../../favicon.ico">-->
+
+    <title>Pebble Dig</title>
+
+    <!-- Bootstrap core CSS -->
+    <!--<link href="systems/jboot/css/bootstrap.css" rel="stylesheet">-->
+    <link href="systems/jboot/css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
+
+    <!-- Custom styles for this template -->
+    <link href="systems/jboot/css/jboot.css" rel="stylesheet">
+    <!--<link href="starter-template.css" rel="stylesheet">-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
     
 </head>
 
 <body>
-    
-    <h1>Pebble Dig (jboot)</h1>
-    
-    <form action="/login" method="post">
-        <div>
-            <label>Username:</label>
-            <input type="text" name="username" />
-            <br/>
+
+    <div class="container">
+
+        <div class="row login-row">
+
+            <!--<div class="col-md-1"></div>-->
+
+            <div class="col-md-7">
+
+                <h1>Pebble Dig</h1>
+
+                <form action="/login" method="post">
+
+                <div>
+                    <label>Username:</label>
+                    <input type="text" name="username" />
+                    <br/>
+                </div>
+
+                <div>
+                    <label>Password:</label>
+                    <input type="password" name="password" />
+                </div>
+
+                <div>
+                    <input type="submit" value="Submit" />
+                </div>
+
+                </form>
+
+                <a href="/signup">sign up</a>
+
+            </div>
+
+            <div class="col-md-5">
+
+                <h3>Dig For Pebble!</h3>
+
+                <p>Pebble Dig is a social game in which you compete against others to collect a currency called Pebble that is found in the land of the Pebble world federal government (solo game) and other players (pvp). </p>
+
+                <h3>First Game Based off the Pebble Platform.</h3>
+
+                <p>The Pebble platform was developed around the idea of a finite money supply. Any game based off of pebble will have a certain finite world total of a in game currency called pebble. Typically all of the worlds pebble will start out existing in what I call "The Reserve Account". As users sign up to play a pebble game there will always be a way to take pebble from the reserve. There may also be ways to which pebble flows back to the reserve as well such as tax. You can also expect there to be ways to willingly give pebble to, or unwillingly take pebble from other users. However no matter what the sum of the reserve account and all the user pebble accounts should add up to the world total. Pebble Dig is the first game I have made so far based off of this platform ( forked from pebble 1.0.434 ), and will serve as a way to further advance the platform.</p>
+
+                <h3>look out, it's a bit sassy.</h3>
+
+                <p>Pebble Dig is a sort of experiment testing out my platform "pebble" in an effort to work out some bugs, and become more familiar with full stack web development using node.js, before moving on to a more interesting game. However who knows maybe Pebble Dig will turn out to be fun. Still if the game seems a bit twitchy, it's because both the game and platform still needs a bit of polish.</p>
+
+            </div>
+
         </div>
-        <div>
-            <label>Password:</label>
-            <input type="password" name="password" />
-        </div>
-        <div>
-            <input type="submit" value="Submit" />
-        </div>
-    </form>
-    <a href="/signup">sign up</a>
+
+    </div>
 
 </body>
 
