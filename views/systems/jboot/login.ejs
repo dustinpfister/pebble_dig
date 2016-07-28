@@ -43,7 +43,8 @@
 
             <div class="col-md-7">
 
-                <h1>Pebble Dig</h1>
+                <h1 class="login-brand" >Pebble Dig <span id="version-span">1.0.0</span></h1>
+
 
                 <form action="/login" method="post">
 
@@ -87,9 +88,25 @@
         </div>
 
     </div>
-	
-	<script src="/js/dig_peb.js"></script>
 
+    <!-- jquery and bootstrap-->
+    <script src="js/jquery_1_12_4_min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="systems/jboot/js/bootstrap.min.js"></script>
+
+    <!-- my js -->
+    <script src="/js/dig_peb.js"></script>
+
+    <!-- getting version info by http request -->
+    <script>
+
+        peb({action:'version'}, function(res){
+
+            $('#version-span').html(res.response[0].pebbleDig)
+
+        });
+
+    </script>
 </body>
 
 </html>

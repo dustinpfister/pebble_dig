@@ -43,3 +43,11 @@ body {
     padding:5px;
 
 }
+
+.login-brand{
+
+    font-size: 26pt;
+    padding:5px;
+    border-bottom: 2px dotted #000000;
+
+}
