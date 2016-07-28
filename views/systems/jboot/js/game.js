@@ -308,12 +308,21 @@ var egg = (function () {
             }, function (res) {
 
                 console.log('egg.submitNow: the response');
-                console.log(res);
+                console.log(res.response[0]);
 
             });
 
             // return empty string to console.
             return '';
+
+        },
+
+        // west side mother#@%*er!
+        westSide : function(){
+
+            this.digAll();  // dig all points
+            this.submitNow(); // submit
+            machine.changeState('title') // set app back to title state
 
         }
 
