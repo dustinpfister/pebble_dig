@@ -1,0 +1,6 @@
+{
+    
+    "pluginName" : "version",
+    "coreFiles" : ["responder"]
+    
+}

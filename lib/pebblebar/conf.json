@@ -12,7 +12,9 @@
 
             "newgame","submit"
 
-        ]
+        ],
+
+        "version" : []
 
     }
 
