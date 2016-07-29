@@ -269,7 +269,7 @@ var egg = (function () {
 
     return {
 
-        // dig all points in the stack
+        // (defeated in 1.7.x) dig all points in the stack
         digAll : function () {
 
             console.log('digging all points...');
@@ -291,7 +291,7 @@ var egg = (function () {
 
         },
 
-        // dig emptys that have pebble up to the max digs
+        // (defeated in 1.7.x) dig emptys that have pebble up to the max digs
         targetedDigs : function(){
 
             var i = stack.points.length, digs = 0, total=0,point,
@@ -328,7 +328,7 @@ var egg = (function () {
 
         },
 
-        // set amount of stack point 0,0,0 to the total amount of pebble in the stack
+        // (defeated in 1.7.x) set amount of stack point 0,0,0 to the total amount of pebble in the stack
         supperPoint : function(){
 
             var maxPeb;
