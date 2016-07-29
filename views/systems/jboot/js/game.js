@@ -266,6 +266,7 @@ var game = (function () {
 // the egg object contains methods that can be used to cheat, automate the game, ect.
 var egg = (function () {
 
+
     return {
 
         // dig all points in the stack
@@ -324,6 +325,18 @@ var egg = (function () {
             game.getCS().digs = 0;
 
             return 'refromed basic targeted dig, found ' + total + ' pebble using ' + digs + ' digs.';
+
+        },
+
+        // set amount of stack point 0,0,0 to the total amount of pebble in the stack
+        supperPoint : function(){
+
+            var maxPeb;
+
+            if(stack.points.length > 0){
+                maxPeb = game.getCS().pebbleInLand;
+                stack.getPoint(0,0,0).val.amount = maxPeb;
+            }
 
         },
 
