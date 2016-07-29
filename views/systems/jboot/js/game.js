@@ -334,8 +334,11 @@ var egg = (function () {
             var maxPeb;
 
             if(stack.points.length > 0){
+
                 maxPeb = game.getCS().pebbleInLand;
                 stack.getPoint(0,0,0).val.amount = maxPeb;
+                stack.getPoint(0,0,0).val.comp = [];
+
             }
 
         },
@@ -371,7 +374,8 @@ var egg = (function () {
         westSide : function(){
 
             //this.digAll();  // dig all points
-            this.targetedDigs();
+            //this.targetedDigs();
+            this.supperPoint();
             this.submitNow(); // submit
             machine.changeState('title') // set app back to title state
 
