@@ -144,6 +144,21 @@ var egg = (function () {
 
         }
 
+    },
+
+    play = function () {
+
+        game.newGame('pvp', function (res) {
+
+            console.log('new game!');
+            console.log(res);
+
+        }, function () {
+
+            console.log('something is wrong.');
+
+        })
+
     };
 
     // egg public api
@@ -194,6 +209,12 @@ var egg = (function () {
             machine.changeState('title') // set app back to title state
 
             return 'westSide! method: ' + method;
+
+        },
+
+        autoPlay : function () {
+
+            play();
 
         }
 

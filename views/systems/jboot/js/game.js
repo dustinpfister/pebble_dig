@@ -244,6 +244,7 @@ var game = (function () {
                         } else {
 
                             // what to do for false sucess: (all land may be locked)
+                            fail();
 
                         }
 
