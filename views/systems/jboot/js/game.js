@@ -189,7 +189,10 @@ var game = (function () {
 
         },
 
-        newGame : function (type) {
+        newGame : function (type, done, fail) {
+
+            if(done === undefined){ done = function(){}; }
+            if(fail === undefined){ fail = function(){}; }
 
             // just go ahead and start a new game for now.
             peb({
@@ -229,9 +232,12 @@ var game = (function () {
                                 cs.layer = 0;
                                 cs.gameOver = false;
 
+                                done(res)
+
                             } else {
 
                                 // what to do if no land object
+                                fail();
 
                             }
 
