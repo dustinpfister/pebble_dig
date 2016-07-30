@@ -170,6 +170,9 @@ var egg = (function () {
             function () {
 
             console.log('something is wrong.');
+			
+			// set to title
+            machine.changeState('title');
 
         })
 
