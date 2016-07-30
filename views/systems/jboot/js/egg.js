@@ -146,9 +146,37 @@ var egg = (function () {
 
     },
 
+    submit = function (done) {
+
+        if (done === undefined) {
+            done = function () {};
+        }
+
+        peb({
+
+            action : 'pebblebar',
+            clientData : [{
+                    //plugin : 'land_game_submit',
+                    plugin : 'land_submit',
+                    landId : game.getCS().landId,
+                    stack3Data : JSON.stringify(stack)
+                }
+            ]
+
+        }, function (res) {
+
+            done(res.response[0]);
+
+        });
+
+    },
+
+    t,
+
     play = function () {
 
-        var method = 'autoDig';
+        var method = 'autoDig',
+        playTime = 1000;
 
         game.newGame('pvp',
 
@@ -163,8 +191,19 @@ var egg = (function () {
 
             // dig the land
             digMethods[method]();
-			
-			game.updateByPoints();
+
+            // update game state
+            game.updateByPoints();
+
+            submit(function (res) {
+
+                console.log('autoplayed stack submited!');
+                console.log(res);
+
+                // play again in playTime
+                t = setTimeout(play, playTime);
+
+            })
 
         },
 
@@ -172,8 +211,8 @@ var egg = (function () {
             function () {
 
             console.log('something is wrong.');
-			
-			// set to title
+
+            // set to title
             machine.changeState('title');
 
         })
@@ -186,20 +225,9 @@ var egg = (function () {
         // submit the current stack now.
         submitNow : function () {
 
-            peb({
+            submit(function (res) {
 
-                action : 'pebblebar',
-                clientData : [{
-                        //plugin : 'land_game_submit',
-                        plugin : 'land_submit',
-                        landId : game.getCS().landId,
-                        stack3Data : JSON.stringify(stack)
-                    }
-                ]
-
-            }, function (res) {
-
-                console.log(res.response[0]);
+                console.log(res)
 
             });
 
