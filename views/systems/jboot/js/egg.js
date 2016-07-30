@@ -173,49 +173,59 @@ var egg = (function () {
 
     t,
 
-    play = function () {
+    play = function (options) {
 
-        var method = 'autoDig',
-        playTime = 1000;
+        options = options === undefined ? {}
 
-        game.newGame('pvp',
+         : options;
 
-            // new game
-            function (res) {
+        options.playTime = options.playTime === undefined ? 1000 : options.playTime;
+        options.method = options.method === undefined ? 'autoDig' : options.method;
+        options.type = options.type === undefined ? 'pvp' : options.type;
 
-            console.log('new game!');
-            console.log(res);
+        var loop = function () {
+            game.newGame(options.type,
 
-            // set machine state to game
-            machine.changeState('game');
+                // new game
+                function (res) {
 
-            // dig the land
-            digMethods[method]();
-
-            // update game state
-            game.updateByPoints();
-
-            submit(function (res) {
-
-                console.log('autoplayed stack submited!');
+                console.log('new game!');
                 console.log(res);
 
-                // play again in playTime
-                t = setTimeout(play, playTime);
+                // set machine state to game
+                machine.changeState('game');
+
+                // dig the land
+                digMethods[options.method]();
+
+                // update game state
+                game.updateByPoints();
+
+                submit(function (res) {
+
+                    console.log('autoplayed stack submited!');
+                    console.log(res);
+
+                    // play again in playTime
+                    t = setTimeout(loop, options.playTime);
+
+                })
+
+            },
+
+                // fail starting new game
+                function () {
+
+                console.log('something is wrong.');
+
+                // set to title
+                machine.changeState('title');
 
             })
 
-        },
+        }
 
-            // fail starting new game
-            function () {
-
-            console.log('something is wrong.');
-
-            // set to title
-            machine.changeState('title');
-
-        })
+        loop();
 
     };
 
@@ -259,9 +269,9 @@ var egg = (function () {
 
         },
 
-        autoPlay : function () {
+        autoPlay : function (options) {
 
-            play();
+            play(options);
 
         }
 
