@@ -69,6 +69,14 @@ var egg = (function () {
 
             }
 
+        },
+
+        // start from the surface down
+        autoDig : function(){
+
+            
+
+
         }
 
     };
@@ -99,6 +107,12 @@ var egg = (function () {
             // return empty string to console.
             return '';
 
+        },
+
+        // just dig with the given method
+        dig : function(method){
+            if(method === undefined){ method = 'autoDig' }
+            digMethods[method]();
         },
 
         // west side mother#@%*er!
