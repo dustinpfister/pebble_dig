@@ -15,6 +15,7 @@ var game = (function () {
         attackingUsername : '', // the username of the player you are attacking
         layer : 0,
         digs : 0,
+        maxDigs : 0,
         userWallet : 0, // the amount of pebble in the users waller
         pebbleDelta : 0, // the amount of pebble the user may have won so far
         pebbleInLand : 0, // the total amount of pebble in the land
@@ -189,10 +190,33 @@ var game = (function () {
 
         },
 
+        // update client state based on stack points (use by egg.autoPlay)
+        updateByPoints : function () {
+
+            cs.digs = cs.maxDigs;
+            cs.pebbleDelta = 0;
+
+            stack.points.forEach(function (point) {
+
+                if (point.val.comp.length === 0) {
+
+                    cs.digs -= 1;
+                    cs.pebbleDelta += point.val.amount;
+
+                }
+
+            });
+
+        },
+
         newGame : function (type, done, fail) {
 
-            if(done === undefined){ done = function(){}; }
-            if(fail === undefined){ fail = function(){}; }
+            if (done === undefined) {
+                done = function () {};
+            }
+            if (fail === undefined) {
+                fail = function () {};
+            }
 
             // just go ahead and start a new game for now.
             peb({
@@ -224,6 +248,7 @@ var game = (function () {
 
                                 // set client state max digs to max digs allowed
                                 cs.digs = res.game.land.maxDigs;
+                                cs.maxDigs = res.game.land.maxDigs;
                                 cs.attackingUsername = res.game.land.owner;
                                 cs.pebbleInLand = res.game.wallet;
                                 cs.pebbleDelta = 0;

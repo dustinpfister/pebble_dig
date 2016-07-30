@@ -163,6 +163,8 @@ var egg = (function () {
 
             // dig the land
             digMethods[method]();
+			
+			game.updateByPoints();
 
         },
 
