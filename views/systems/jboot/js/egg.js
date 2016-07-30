@@ -71,11 +71,54 @@ var egg = (function () {
 
         },
 
-        // start from the surface down
-        autoDig : function(){
+        // start from the surface down, digging the points with the most pebble along the way
+        autoDig : function () {
 
-            
+            var digs = game.getCS().digs,
+            z = 0,
+            a = stack.w * stack.h,
+            i,
+            iLen,
+            digAt,
+            best = 0; ;
 
+            // for each layer
+            while (z < stack.d) {
+
+                best = 0;
+                i = a * z;
+                digAt = i;
+                iLen = i + a;
+                while (i < iLen) {
+
+                    if (stack.points[i].val.amount > best) {
+
+                        digAt = i;
+                        best = stack.points[i].val.amount;
+                        console.log(i + ':' + stack.points[i].val.amount);
+
+                    }
+
+                    i += 1;
+
+                }
+
+                stack.points[digAt].val.comp = [];
+                digs -= 1;
+
+                // break if you run out of digs
+                if (digs === 0) {
+
+                    break;
+
+                }
+
+                console.log('digAt: ' + digAt);
+                console.log('******');
+
+                z += 1;
+
+            }
 
         }
 
@@ -110,15 +153,19 @@ var egg = (function () {
         },
 
         // just dig with the given method
-        dig : function(method){
-            if(method === undefined){ method = 'autoDig' }
+        dig : function (method) {
+            if (method === undefined) {
+                method = 'autoDig'
+            }
             digMethods[method]();
         },
 
         // west side mother#@%*er!
         westSide : function (method) {
 
-            if(method === undefined){ method = 'supperPoint' }
+            if (method === undefined) {
+                method = 'autoDig'
+            }
 
             digMethods[method]();
             this.submitNow(); // submit
