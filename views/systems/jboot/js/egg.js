@@ -85,6 +85,7 @@ var egg = (function () {
             // for each layer
             while (z < stack.d) {
 
+                // find best
                 best = 0;
                 i = a * z;
                 digAt = i;
@@ -95,7 +96,6 @@ var egg = (function () {
 
                         digAt = i;
                         best = stack.points[i].val.amount;
-                        console.log(i + ':' + stack.points[i].val.amount);
 
                     }
 
@@ -103,6 +103,7 @@ var egg = (function () {
 
                 }
 
+                // dig point
                 stack.points[digAt].val.comp = [];
                 digs -= 1;
 
@@ -113,10 +114,31 @@ var egg = (function () {
 
                 }
 
-                console.log('digAt: ' + digAt);
-                console.log('******');
-
                 z += 1;
+
+            }
+
+            // use remaining digs from the bottom up
+            if (digs > 0) {
+
+                i = stack.points.length;
+                while (i--) {
+
+                    if (stack.points[i].val.amount > 0 && stack.points[i].val.comp.length > 0) {
+
+                        // dig
+                        stack.points[i].val.comp = [];
+                        digs -= 1;
+
+                    }
+
+                    if (digs === 0) {
+
+                        break;
+
+                    }
+
+                }
 
             }
 
