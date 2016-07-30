@@ -172,7 +172,7 @@ var egg = (function () {
     },
 
     t,
-
+    killAuto = false,
     play = function (options) {
 
         options = options === undefined ? {}
@@ -182,6 +182,8 @@ var egg = (function () {
         options.playTime = options.playTime === undefined ? 1000 : options.playTime;
         options.method = options.method === undefined ? 'autoDig' : options.method;
         options.type = options.type === undefined ? 'pvp' : options.type;
+
+        killAuto = false;
 
         var loop = function () {
             game.newGame(options.type,
@@ -206,8 +208,10 @@ var egg = (function () {
                     console.log('autoplayed stack submited!');
                     console.log(res);
 
-                    // play again in playTime
-                    t = setTimeout(loop, options.playTime);
+                    if (!killAuto) {
+                        // play again in playTime
+                        t = setTimeout(loop, options.playTime);
+                    }
 
                 })
 
@@ -272,6 +276,12 @@ var egg = (function () {
         autoPlay : function (options) {
 
             play(options);
+
+        },
+
+        killAuto : function () {
+
+            killAuto = true;
 
         }
 
