@@ -148,12 +148,26 @@ var egg = (function () {
 
     play = function () {
 
-        game.newGame('pvp', function (res) {
+        var method = 'autoDig';
+
+        game.newGame('pvp',
+
+            // new game
+            function (res) {
 
             console.log('new game!');
             console.log(res);
 
-        }, function () {
+            // set machine state to game
+            machine.changeState('game');
+
+            // dig the land
+            digMethods[method]();
+
+        },
+
+            // fail starting new game
+            function () {
 
             console.log('something is wrong.');
 
