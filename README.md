@@ -1,6 +1,6 @@
 # Pebble_dig
 
-    please note: this readme reflects v1.7.15
+    please note: this readme reflects v1.8.13
 
 Pebble_dig is the fist game based off of my platform "pebble" ( forked from version 1.0.434 ), and prototypes of mine that I developed simply called "dig", and "stack_3". It is a game where there is a finite amount of a currency called "pebble" that is found in the land parcels of the pebble world government (solo game), and that of other players (pvp). It is a project where I aim to help with understanding what needs to change with my platform, and hopefully result in a somewhat fun game in the process.
 
