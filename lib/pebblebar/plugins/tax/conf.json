@@ -1,0 +1,7 @@
+{
+    
+    "pluginName" : "tax",
+    "coreFiles" : ["setup"],
+    "addToScopeFiles" : ["tax"]
+    
+}
