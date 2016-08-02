@@ -41,7 +41,8 @@ var game = (function () {
 
         }, function (data) {
 
-            console.log('submited');
+            console.log('submited:');
+            console.log(data);
 
         });
 
